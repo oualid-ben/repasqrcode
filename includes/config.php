@@ -1,9 +1,9 @@
 <?php
-$config['db']['host'] = 'localhost';
-$config['db']['name'] = 'quickqr';
-$config['db']['user'] = 'root';
-$config['db']['pass'] = '';
-$config['db']['pre'] = 'qr_';
+$config['db']['host'] = 'eu-cdbr-west-01.cleardb.com';
+$config['db']['name'] = 'repasqrcode';
+$config['db']['user'] = 'bbb18cb2af9d55';
+$config['db']['pass'] = 'dfaaa416';
+$config['db']['pre'] = '';
 $config['db']['port'] = '';
 
 $config['version'] = '6.1.1';
