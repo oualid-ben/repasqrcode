@@ -1,5 +1,6 @@
 <?php
-function get_random_string($length = 10) {
+function get_random_string($length = 10)
+{
     $key = '';
     $keys = array_merge(range(0, 9), range('a', 'z'));
 
@@ -132,7 +133,8 @@ function importSchemaSql($con, $prefix)
     // Default country SQL file
     $filename = 'database/schema.sql';
     $rawFilePath = $filename;
-    $filePath = 'installed-db/' . $filename;
+    $filePath = 'install/' . $filename;
+    // $filePath = 'installed-db/' . $filename;
 
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
 
@@ -145,13 +147,15 @@ function importDataSql($con, $prefix)
     // Default country SQL file
     $filename = 'database/data.sql';
     $rawFilePath = $filename;
-    $filePath = 'installed-db/' . $filename;
+    $filePath = 'install/' . $filename;
+    // $filePath = 'installed-db/' . $filename;
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
 
     return importSql($con, $filePath);
 }
 
-function verify_envato_purchase_code($code_to_verify,$site_url) {
+function verify_envato_purchase_code($code_to_verify, $site_url)
+{
 
     $buyer_email = "";
     $installing_version = '5.1';
@@ -161,7 +165,8 @@ function verify_envato_purchase_code($code_to_verify,$site_url) {
     return $output['success'];
 }
 
-function get_all_country_list(){
+function get_all_country_list()
+{
     return array(
         'AF' => 'Afghanistan',
         'AX' => 'Åland Islands',
