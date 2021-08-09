@@ -80,28 +80,32 @@ function importSql($con, $filePath)
         // Read in entire file
         $lines = file($filePath);
         // Loop through each line
-        foreach ($lines as $line) {
-            // Skip it if it's a comment
-            if (substr($line, 0, 2) == '--' || trim($line) == '') {
-                continue;
-            }
-            if (substr($line, 0, 2) == '/*') {
-                continue;
-            }
+        if (is_array($lines)) {
 
-            // Add this line to the current segment
-            $tmpline .= $line;
-            // If it has a semicolon at the end, it's the end of the query
-            if (substr(trim($line), -1, 1) == ';') {
-                // Perform the query
-                if (!$con->query($tmpline)) {
-                    echo "<pre>Error performing query '<strong>" . $tmpline . "</strong>' : " . $con->error . " - Code: " . $con->errno . "</pre><br />";
-                    $errorDetect = true;
+            foreach ($lines as $line) {
+                // Skip it if it's a comment
+                if (substr($line, 0, 2) == '--' || trim($line) == '') {
+                    continue;
                 }
-                // Reset temp variable to empty
-                $tmpline = '';
+                if (substr($line, 0, 2) == '/*') {
+                    continue;
+                }
+
+                // Add this line to the current segment
+                $tmpline .= $line;
+                // If it has a semicolon at the end, it's the end of the query
+                if (substr(trim($line), -1, 1) == ';') {
+                    // Perform the query
+                    if (!$con->query($tmpline)) {
+                        echo "<pre>Error performing query '<strong>" . $tmpline . "</strong>' : " . $con->error . " - Code: " . $con->errno . "</pre><br />";
+                        $errorDetect = true;
+                    }
+                    // Reset temp variable to empty
+                    $tmpline = '';
+                }
             }
         }
+
         // Check if error is detected
         if ($errorDetect) {
             //dd('ERROR');
