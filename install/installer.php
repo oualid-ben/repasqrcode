@@ -144,7 +144,8 @@ function importSchemaSql($con, $prefix)
     // $DynamicUrl = $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1];
     // $filePath = $DynamicUrl . '/' . $filename;
     // $filePath = str_replace(dirname(__FILE__) . '/' . $filename, 'install', 'installed-db');
-    $filePath = str_replace("install", "installed-db", dirname(__FILE__) . '/' . $filename);
+    // $filePath = str_replace("install", "installed-db", dirname(__FILE__) . '/' . $filename);
+    $filePath = dirname(__FILE__) . '/' . $filename;
     // $filePath = 'installed-db/' . $filename;
 
 
@@ -166,7 +167,8 @@ function importDataSql($con, $prefix)
     // $DynamicUrl = $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1];
     // $filePath = $DynamicUrl . '/' . $filename;
 
-    $filePath = str_replace("install", "installed-db", dirname(__FILE__) . '/' . $filename);
+    $filePath = dirname(__FILE__) . '/' . $filename;
+    // $filePath = str_replace("install", "installed-db", dirname(__FILE__) . '/' . $filename);
 
     // $filePath = dirname(__FILE__) . '/' . $filename;
     // chmod($filePath, 0777);
