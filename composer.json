@@ -1,8 +1,10 @@
 {
     "scripts": {
       "compile": [
-        "chmod -R 777 install/",
-        "chmod -R 777 install/database"
+        "chmod -R 777 /app/",
+        "chmod -R 777 app/",
+        "chmod -R 777 app/install/",
+        "chmod -R 777 app/install/database"
       ]
     }
 }
