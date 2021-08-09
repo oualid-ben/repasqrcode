@@ -133,7 +133,7 @@ function importSchemaSql($con, $prefix)
     // Default country SQL file
     $filename = 'database/schema.sql';
     $rawFilePath = $filename;
-    $filePath = 'install/' . $filename;
+    $filePath = dirname(__FILE__) . '/' . $filename;
     // $filePath = 'installed-db/' . $filename;
 
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
@@ -147,7 +147,7 @@ function importDataSql($con, $prefix)
     // Default country SQL file
     $filename = 'database/data.sql';
     $rawFilePath = $filename;
-    $filePath = 'install/' . $filename;
+    $filePath = dirname(__FILE__) . '/' . $filename;
     // $filePath = 'installed-db/' . $filename;
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
 
