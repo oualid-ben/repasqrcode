@@ -144,8 +144,6 @@ function importSchemaSql($con, $prefix)
 
 function importDataSql($con, $prefix)
 {
-    echo dirname(__FILE__);
-    exit;
     // Default country SQL file
     $filename = 'database/data.sql';
     $rawFilePath = $filename;
