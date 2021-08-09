@@ -138,8 +138,14 @@ function importSchemaSql($con, $prefix)
 
     $filename = 'database/schema.sql';
     $rawFilePath = $filename;
-    $filePath = dirname(__FILE__) . '/' . $filename;
-    chmod($filePath, 0777);
+
+    $RequestUriArray = explode('/', $_SERVER['REQUEST_URI']);
+    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1] . "/install";
+    $filePath = $DynamicUrl . '/' . $filename;
+    // $filePath = dirname(__FILE__) . '/' . $filename;
+
+
+    // chmod($filePath, 0777);
     // $filePath = 'installed-db/' . $filename;
 
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
@@ -153,8 +159,11 @@ function importDataSql($con, $prefix)
     // Default country SQL file
     $filename = 'database/data.sql';
     $rawFilePath = $filename;
-    $filePath = dirname(__FILE__) . '/' . $filename;
-    chmod($filePath, 0777);
+    $RequestUriArray = explode('/', $_SERVER['REQUEST_URI']);
+    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1] . "/install";
+    $filePath = $DynamicUrl . '/' . $filename;
+    // $filePath = dirname(__FILE__) . '/' . $filename;
+    // chmod($filePath, 0777);
     // $filePath = 'installed-db/' . $filename;
     setSqlWithDbPrefix($rawFilePath, $filePath, $prefix);
 
