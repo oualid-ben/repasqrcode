@@ -15,4 +15,5 @@ $config['db']['pre'] = 'qr_';
 $config['db']['port'] = '';
 
 $config['version'] = '6.1.1';
+$config['installed'] = '1';
 // $config['installed'] = 1;
