@@ -140,7 +140,7 @@ function importSchemaSql($con, $prefix)
     $rawFilePath = $filename;
 
     $RequestUriArray = explode('/', $_SERVER['REQUEST_URI']);
-    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1] . "/install";
+    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1];
     $filePath = $DynamicUrl . '/' . $filename;
     // $filePath = dirname(__FILE__) . '/' . $filename;
 
@@ -160,7 +160,7 @@ function importDataSql($con, $prefix)
     $filename = 'database/data.sql';
     $rawFilePath = $filename;
     $RequestUriArray = explode('/', $_SERVER['REQUEST_URI']);
-    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1] . "/install";
+    $DynamicUrl = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['SERVER_NAME'] . "/" . $RequestUriArray[1];
     $filePath = $DynamicUrl . '/' . $filename;
     // $filePath = dirname(__FILE__) . '/' . $filename;
     // chmod($filePath, 0777);
