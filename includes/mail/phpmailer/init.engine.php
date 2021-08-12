@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Mailing System
  * @author Bylancer
@@ -14,7 +15,7 @@ $config['smtp_debug'] = false;
 
 
 # SMTP***********************************
-if($config['email_type'] == 'smtp'){
+if ($config['email_type'] == 'smtp') {
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -24,9 +25,9 @@ if($config['email_type'] == 'smtp'){
     $mail->SMTPDebug = $config['smtp_debug'];
     $mail->Debugoutput = 'html';
     $mail->SMTPKeepAlive = true;
-    if($config['smtp_secure']==1){# SSL
+    if ($config['smtp_secure'] == 1) { # SSL
         $mail->SMTPSecure = 'ssl';
-    }else if($config['smtp_secure']==2){# TLS
+    } else if ($config['smtp_secure'] == 2) { # TLS
         $mail->SMTPSecure = 'tls';
     }
     $mail->Username = $config['smtp_username'];
@@ -35,15 +36,14 @@ if($config['email_type'] == 'smtp'){
     $mail->Priority = 1;
     $mail->Encoding = 'base64';
     $mail->CharSet = "utf-8";
-    if($config['email_template']==0){
+    if ($config['email_template'] == 0) {
         $mail->IsHTML(true);
         $mail->ContentType = "text/html";
-    }
-    else{
+    } else {
         $mail->ContentType = "text/plain";
     }
     $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if($email_reply_to != null){
+    if ($email_reply_to != null) {
         $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
     }
 
@@ -56,17 +56,17 @@ if($config['email_type'] == 'smtp'){
     $mail->Body = $email_body;
 
     /* Send Error */
-    if(!$mail->Send()){
+    if (!$mail->Send()) {
         return false;
         //echo $mail->ErrorInfo;
-    }else{
+    } else {
         return true;
         //echo $mail->ErrorInfo;
     }
 }
 
 # PHPMail*******************************************************************************
-else if($config['email_type'] == 'mail'){
+else if ($config['email_type'] == 'mail') {
 
     $mail = new PHPMailer(true);
     $mail->Debugoutput = 'html';
@@ -74,14 +74,14 @@ else if($config['email_type'] == 'mail'){
     $mail->Encoding = 'base64';
     $mail->CharSet = "utf-8";
 
-    if($config['email_template']==0){
+    if ($config['email_template'] == 0) {
         $mail->IsHTML(true);
         $mail->ContentType = "text/html";
-    }else{
+    } else {
         $mail->IsHTML(false);
     }
     $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if($email_reply_to != null){
+    if ($email_reply_to != null) {
         $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
     }
 
@@ -94,14 +94,14 @@ else if($config['email_type'] == 'mail'){
     $mail->Body = $email_body;
 
     /* Send Error */
-    if(!$mail->Send()){
+    if (!$mail->Send()) {
         echo $mail->ErrorInfo;
-    }else{
+    } else {
         echo $mail->ErrorInfo;
     }
 }
 # Amazon SES*******************************************************************************
-else if($config['email_type'] == 'aws'){
+else if ($config['email_type'] == 'aws') {
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -119,15 +119,14 @@ else if($config['email_type'] == 'aws'){
     $mail->Priority = 1;
     $mail->Encoding = 'base64';
     $mail->CharSet = "utf-8";
-    if($config['email_template']==0){
+    if ($config['email_template'] == 0) {
         $mail->IsHTML(true);
         $mail->ContentType = "text/html";
-    }
-    else{
+    } else {
         $mail->ContentType = "text/plain";
     }
     $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if($email_reply_to != null){
+    if ($email_reply_to != null) {
         $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
     }
 
@@ -140,15 +139,14 @@ else if($config['email_type'] == 'aws'){
     $mail->Body = $email_body;
 
     /* Send Error */
-    if(!$mail->Send()){
+    if (!$mail->Send()) {
         //echo $mail->ErrorInfo;
-    }else{
+    } else {
         //echo $mail->ErrorInfo;
     }
-
 }
 # # Mandrill*******************************************************************************
-else if($config['email_type'] == 'mandrill'){
+else if ($config['email_type'] == 'mandrill') {
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
@@ -157,8 +155,8 @@ else if($config['email_type'] == 'mandrill'){
     $mail->SMTPAuth = true;
     $mail->SMTPDebug = $config['smtp_debug'];
     $mail->Debugoutput = 'html';
-    $mail->SMTPKeepAlive = true;
-    $mail->SMTPSecure = 'tls';
+    // $mail->SMTPKeepAlive = true;
+    // $mail->SMTPSecure = 'tls';
     $mail->Username = $config['mandrill_user'];
     $mail->Password = $config['mandrill_key'];
     $mail->Port = 587;
@@ -166,14 +164,14 @@ else if($config['email_type'] == 'mandrill'){
     $mail->Priority = 1;
     $mail->Encoding = 'base64';
     $mail->CharSet = "utf-8";
-    if($config['email_template']==0){
+    if ($config['email_template'] == 0) {
         $mail->IsHTML(true);
         $mail->ContentType = "text/html";
-    }else{
+    } else {
         $mail->ContentType = "text/plain";
     }
     $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if($email_reply_to != null){
+    if ($email_reply_to != null) {
         $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
     }
 
@@ -187,15 +185,15 @@ else if($config['email_type'] == 'mandrill'){
     $mail->Body = $email_body;
 
     /* Send Error */
-    if(!$mail->Send()){
+    if (!$mail->Send()) {
         //echo $mail->ErrorInfo;
-    }else{
+    } else {
         //echo $mail->ErrorInfo;
     }
     # *************************************************************************
 }
 # ********************************************************************************************************************************
-else if($config['email_type'] == 'sendgrid'){ # SendGrid
+else if ($config['email_type'] == 'sendgrid') { # SendGrid
     $mail = new PHPMailer();
     $mail->IsSMTP();
 
@@ -212,15 +210,14 @@ else if($config['email_type'] == 'sendgrid'){ # SendGrid
     $mail->Priority = 1;
     $mail->Encoding = 'base64';
     $mail->CharSet = "utf-8";
-    if($config['email_template']==0){
+    if ($config['email_template'] == 0) {
         $mail->IsHTML(true);
         $mail->ContentType = "text/html";
-    }
-    else{
+    } else {
         $mail->ContentType = "text/plain";
     }
     $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if($email_reply_to != null){
+    if ($email_reply_to != null) {
         $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
     }
 
@@ -233,10 +230,9 @@ else if($config['email_type'] == 'sendgrid'){ # SendGrid
     $mail->Body = $email_body;
 
     /* Send Error */
-    if(!$mail->Send()){
+    if (!$mail->Send()) {
         //echo $mail->ErrorInfo;
-    }else{
+    } else {
         //echo $mail->ErrorInfo;
     }
 }
-?>
