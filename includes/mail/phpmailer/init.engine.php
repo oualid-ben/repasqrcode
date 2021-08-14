@@ -148,48 +148,137 @@ else if ($config['email_type'] == 'aws') {
 # # Mandrill*******************************************************************************
 else if ($config['email_type'] == 'mandrill') {
 
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
+    try {
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
 
-    $mail->Host     = 'smtp.mandrillapp.com';
-    $mail->SMTPAuth = true;
-    $mail->SMTPDebug = $config['smtp_debug'];
-    $mail->Debugoutput = 'html';
-    // $mail->SMTPKeepAlive = true;
-    // $mail->SMTPSecure = 'tls';
-    $mail->Username = $config['mandrill_user'];
-    $mail->Password = $config['mandrill_key'];
-    $mail->Port = 587;
+        $mail->Host     = 'smtp.mandrillapp.com';
+        $mail->SMTPAuth = true;
+        $mail->SMTPDebug = $config['smtp_debug'];
+        $mail->Debugoutput = 'html';
+        $mail->SMTPKeepAlive = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Username = $config['mandrill_user'];
+        $mail->Password = $config['mandrill_key'];
+        $mail->Port = 587;
 
-    $mail->Priority = 1;
-    $mail->Encoding = 'base64';
-    $mail->CharSet = "utf-8";
-    if ($config['email_template'] == 0) {
-        $mail->IsHTML(true);
-        $mail->ContentType = "text/html";
-    } else {
-        $mail->ContentType = "text/plain";
-    }
-    $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
-    if ($email_reply_to != null) {
-        $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
+        $mail->Priority = 1;
+        $mail->Encoding = 'base64';
+        $mail->CharSet = "utf-8";
+        $mail->isHTML(true);  // Set email format to HTML
+        $mail->smtpConnect(
+            array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                    "allow_self_signed" => true
+                )
+            )
+        );
+        if ($config['email_template'] == 0) {
+            $mail->IsHTML(true);
+            $mail->ContentType = "text/html";
+        } else {
+            $mail->ContentType = "text/plain";
+        }
+        $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
+        if ($email_reply_to != null) {
+            $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
+        }
+
+        # *************************************************************************
+        /* Clear Mails */
+        $mail->clearAddresses();
+        $mail->clearCustomHeaders();
+        $mail->clearAllRecipients();
+        $mail->AddAddress($email_to, $email_to_name);
+        $mail->Subject  =  $email_subject;
+        $mail->Body = $email_body;
+
+        /* Send Error */
+        if ($mail->Send()) {
+            // echo 'send';
+            // print_r($mail->ErrorInfo);
+            // exit;
+            //echo $mail->ErrorInfo;
+        } else {
+            // print_r($mail->ErrorInfo);
+            // exit;
+            // echo $mail->ErrorInfo;
+        }
+    } catch (\Throwable $ex) {
+        print_r($ex->getMessage());
+        exit;
     }
 
     # *************************************************************************
-    /* Clear Mails */
-    $mail->clearAddresses();
-    $mail->clearCustomHeaders();
-    $mail->clearAllRecipients();
-    $mail->AddAddress($email_to, $email_to_name);
-    $mail->Subject  =  $email_subject;
-    $mail->Body = $email_body;
+} else if ($config['email_type'] == 'gmail') {
 
-    /* Send Error */
-    if (!$mail->Send()) {
-        //echo $mail->ErrorInfo;
-    } else {
-        //echo $mail->ErrorInfo;
+    try {
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+
+        $mail->Host     = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        // $mail->SMTPDebug = $config['smtp_debug'];
+        // $mail->Debugoutput = 'html';
+        // $mail->SMTPKeepAlive = true;
+        $mail->SMTPSecure = 'tls';
+        // $mail->Username = "testingcheck9@gmail.com";
+        $mail->Username = $config['gmail_user'];
+        // $mail->Password = "Admin@123";
+        $mail->Password = $config['gmail_pass'];
+        $mail->Port = 587;
+
+        // $mail->Priority = 1;
+        // $mail->Encoding = 'base64';
+        // $mail->CharSet = "utf-8";
+        // $mail->isHTML(true);  // Set email format to HTML
+        $mail->smtpConnect(
+            array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                    "allow_self_signed" => true
+                )
+            )
+        );
+        if ($config['email_template'] == 0) {
+            $mail->IsHTML(true);
+            $mail->ContentType = "text/html";
+        } else {
+            $mail->ContentType = "text/plain";
+        }
+        $mail->SetFrom($config['admin_email'], $name = $config['site_title']);
+        if ($email_reply_to != null) {
+            $mail->AddReplyTo($email_reply_to, $email_reply_to_name);
+        }
+
+        # *************************************************************************
+        /* Clear Mails */
+        $mail->clearAddresses();
+        $mail->clearCustomHeaders();
+        $mail->clearAllRecipients();
+        $mail->AddAddress($email_to, $email_to_name);
+        $mail->Subject  =  $email_subject;
+        $mail->Body = $email_body;
+
+        /* Send Error */
+        if ($mail->Send()) {
+            echo 'send';
+            // print_r($mail->ErrorInfo);
+            // exit;
+            //echo $mail->ErrorInfo;
+        } else {
+            // print_r($mail->ErrorInfo);
+            // exit;
+            echo $mail->ErrorInfo;
+        }
+    } catch (\Throwable $ex) {
+        print_r($ex->getMessage());
+        exit;
     }
+
     # *************************************************************************
 }
 # ********************************************************************************************************************************

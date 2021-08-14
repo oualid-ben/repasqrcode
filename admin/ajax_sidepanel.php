@@ -14,7 +14,7 @@ require_once('../includes/functions/func.admin.php');
 require_once('../includes/functions/func.sqlquery.php');
 require_once('../includes/functions/func.users.php');
 require_once('../includes/classes/GoogleTranslate.php');
-require_once('../includes/lang/lang_'.$config['lang'].'.php');
+require_once('../includes/lang/lang_' . $config['lang'] . '.php');
 
 admin_session_start();
 checkloggedadmin();
@@ -27,54 +27,108 @@ require_once('../includes/seo-url.php');
 
 
 //SidePanel Ajax Function
-if(isset($_GET['action'])){
-    if(!check_allow()){
+if (isset($_GET['action'])) {
+    if (!check_allow()) {
         $status = "Sorry:";
         $message = "permission denied for demo.";
         echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
         die();
     }
 
-    if ($_GET['action'] == "addAdmin") { addAdmin(); }
-    if ($_GET['action'] == "editAdmin") { editAdmin(); }
-    if ($_GET['action'] == "addUser") { addUser(); }
-    if ($_GET['action'] == "editUser") { editUser(); }
+    if ($_GET['action'] == "addAdmin") {
+        addAdmin();
+    }
+    if ($_GET['action'] == "editAdmin") {
+        editAdmin();
+    }
+    if ($_GET['action'] == "addUser") {
+        addUser();
+    }
+    if ($_GET['action'] == "editUser") {
+        editUser();
+    }
 
-    if ($_GET['action'] == "addCurrency") { addCurrency(); }
-    if ($_GET['action'] == "editCurrency") { editCurrency(); }
-    if ($_GET['action'] == "addTimezone") { addTimezone(); }
-    if ($_GET['action'] == "editTimezone") { editTimezone(); }
-    if ($_GET['action'] == "addLanguage") { addLanguage(); }
-    if ($_GET['action'] == "editLanguage") { editLanguage(); }
+    if ($_GET['action'] == "addCurrency") {
+        addCurrency();
+    }
+    if ($_GET['action'] == "editCurrency") {
+        editCurrency();
+    }
+    if ($_GET['action'] == "addTimezone") {
+        addTimezone();
+    }
+    if ($_GET['action'] == "editTimezone") {
+        editTimezone();
+    }
+    if ($_GET['action'] == "addLanguage") {
+        addLanguage();
+    }
+    if ($_GET['action'] == "editLanguage") {
+        editLanguage();
+    }
 
-    if ($_GET['action'] == "addMembershipPlan") { addMembershipPlan(); }
-    if ($_GET['action'] == "editMembershipPlan") { editMembershipPlan(); }
-    if ($_GET['action'] == "addMembershipPackage") { addMembershipPackage(); }
-    if ($_GET['action'] == "editMembershipPackage") { editMembershipPackage(); }
+    if ($_GET['action'] == "addMembershipPlan") {
+        addMembershipPlan();
+    }
+    if ($_GET['action'] == "editMembershipPlan") {
+        editMembershipPlan();
+    }
+    if ($_GET['action'] == "addMembershipPackage") {
+        addMembershipPackage();
+    }
+    if ($_GET['action'] == "editMembershipPackage") {
+        editMembershipPackage();
+    }
 
-    if ($_GET['action'] == "addTax") { addTax(); }
-    if ($_GET['action'] == "editTax") { editTax(); }
+    if ($_GET['action'] == "addTax") {
+        addTax();
+    }
+    if ($_GET['action'] == "editTax") {
+        editTax();
+    }
 
-    if ($_GET['action'] == "addStaticPage") { addStaticPage(); }
-    if ($_GET['action'] == "editStaticPage") { editStaticPage(); }
-    if ($_GET['action'] == "addFAQentry") { addFAQentry(); }
-    if ($_GET['action'] == "editFAQentry") { editFAQentry(); }
+    if ($_GET['action'] == "addStaticPage") {
+        addStaticPage();
+    }
+    if ($_GET['action'] == "editStaticPage") {
+        editStaticPage();
+    }
+    if ($_GET['action'] == "addFAQentry") {
+        addFAQentry();
+    }
+    if ($_GET['action'] == "editFAQentry") {
+        editFAQentry();
+    }
 
-    if ($_GET['action'] == "transactionEdit") { transactionEdit(); }
-    if ($_GET['action'] == "paymentEdit") { paymentEdit(); }
+    if ($_GET['action'] == "transactionEdit") {
+        transactionEdit();
+    }
+    if ($_GET['action'] == "paymentEdit") {
+        paymentEdit();
+    }
 
-    if ($_GET['action'] == "SaveSettings") { SaveSettings(); }
-    if ($_GET['action'] == "saveEmailTemplate") { saveEmailTemplate(); }
-    if ($_GET['action'] == "testEmailTemplate") { testEmailTemplate(); }
+    if ($_GET['action'] == "SaveSettings") {
+        SaveSettings();
+    }
+    if ($_GET['action'] == "saveEmailTemplate") {
+        saveEmailTemplate();
+    }
+    if ($_GET['action'] == "testEmailTemplate") {
+        testEmailTemplate();
+    }
 
-    if ($_GET['action'] == "addTestimonial") { addTestimonial(); }
-    if ($_GET['action'] == "editTestimonial") { editTestimonial(); }
-
+    if ($_GET['action'] == "addTestimonial") {
+        addTestimonial();
+    }
+    if ($_GET['action'] == "editTestimonial") {
+        editTestimonial();
+    }
 }
 
 
-function addTestimonial(){
-    global $lang,$config;
+function addTestimonial()
+{
+    global $lang, $config;
 
     $title = validate_input($_POST['name']);
     $designation = validate_input($_POST['designation']);
@@ -82,18 +136,18 @@ function addTestimonial(){
     $description = validate_input($_POST['content']);
     $error = array();
 
-    if(empty($title)){
+    if (empty($title)) {
         $error[] = "Name is required.";
     }
-    if(empty($designation)){
+    if (empty($designation)) {
         $error[] = "Designation is required.";
     }
-    if(empty($description)){
+    if (empty($description)) {
         $error[] = "Content is required.";
     }
 
-    if(empty($error)){
-        if(!empty($_FILES['image'])){
+    if (empty($error)) {
+        if (!empty($_FILES['image'])) {
             $file = $_FILES['image'];
             // Valid formats
             $valid_formats = array("jpeg", "jpg", "png");
@@ -104,11 +158,11 @@ function addTestimonial(){
                 //File extension check
                 if (in_array($ext, $valid_formats)) {
                     $main_path = "../storage/testimonials/";
-                    $filename = uniqid(time()).'.'.$ext;
-                    if(move_uploaded_file($file['tmp_name'], $main_path.$filename)){
+                    $filename = uniqid(time()) . '.' . $ext;
+                    if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                         $image = $filename;
-                        resizeImage(100,$main_path.$filename,$main_path.$filename);
-                    }else{
+                        resizeImage(100, $main_path . $filename, $main_path . $filename);
+                    } else {
                         $error[] = 'Unexpected error, please try again.';
                     }
                 } else {
@@ -119,7 +173,7 @@ function addTestimonial(){
     }
 
     if (empty($error)) {
-        $test = ORM::for_table($config['db']['pre'].'testimonials')->create();
+        $test = ORM::for_table($config['db']['pre'] . 'testimonials')->create();
         $test->name = $title;
         $test->designation = $designation;
         $test->image = $image;
@@ -140,8 +194,9 @@ function addTestimonial(){
     die();
 }
 
-function editTestimonial(){
-    global $lang,$config;
+function editTestimonial()
+{
+    global $lang, $config;
 
     $title = validate_input($_POST['name']);
     $designation = validate_input($_POST['designation']);
@@ -149,18 +204,18 @@ function editTestimonial(){
     $description = validate_input($_POST['content']);
     $error = array();
 
-    if(empty($title)){
+    if (empty($title)) {
         $error[] = "Name is required.";
     }
-    if(empty($designation)){
+    if (empty($designation)) {
         $error[] = "Designation is required.";
     }
-    if(empty($description)){
+    if (empty($description)) {
         $error[] = "Content is required.";
     }
 
-    if(empty($error)){
-        if(!empty($_FILES['image'])){
+    if (empty($error)) {
+        if (!empty($_FILES['image'])) {
             $file = $_FILES['image'];
             // Valid formats
             $valid_formats = array("jpeg", "jpg", "png");
@@ -171,22 +226,22 @@ function editTestimonial(){
                 //File extension check
                 if (in_array($ext, $valid_formats)) {
                     $main_path = "../storage/testimonials/";
-                    $filename = uniqid(time()).'.'.$ext;
-                    if(move_uploaded_file($file['tmp_name'], $main_path.$filename)){
+                    $filename = uniqid(time()) . '.' . $ext;
+                    if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                         $image = $filename;
-                        resizeImage(100,$main_path.$filename,$main_path.$filename);
+                        resizeImage(100, $main_path . $filename, $main_path . $filename);
 
                         // remove old image
-                        $info = ORM::for_table($config['db']['pre'].'testimonials')
+                        $info = ORM::for_table($config['db']['pre'] . 'testimonials')
                             ->select('image')
                             ->find_one($_POST['id']);
 
-                        if($info['image'] != "default.png"){
-                            if(file_exists($main_path.$info['image'])){
-                                unlink($main_path.$info['image']);
+                        if ($info['image'] != "default.png") {
+                            if (file_exists($main_path . $info['image'])) {
+                                unlink($main_path . $info['image']);
                             }
                         }
-                    }else{
+                    } else {
                         $error[] = 'Unexpected error, please try again.';
                     }
                 } else {
@@ -197,10 +252,10 @@ function editTestimonial(){
     }
 
     if (empty($error)) {
-        $test = ORM::for_table($config['db']['pre'].'testimonials')->find_one($_POST['id']);
+        $test = ORM::for_table($config['db']['pre'] . 'testimonials')->find_one($_POST['id']);
         $test->name = $title;
         $test->designation = $designation;
-        if($image){
+        if ($image) {
             $test->image = $image;
         }
         $test->content = $description;
@@ -220,7 +275,7 @@ function editTestimonial(){
     die();
 }
 
-function change_config_file_settings($filePath, $newSettings,$lang)
+function change_config_file_settings($filePath, $newSettings, $lang)
 {
     // Update $fileSettings with any new values
     $fileSettings = array_merge($lang, $newSettings);
@@ -235,15 +290,15 @@ function change_config_file_settings($filePath, $newSettings,$lang)
 
     // Write it back to the file
     file_put_contents($filePath, $newFileStr);
-
 }
 
-function addAdmin(){
-    global $config,$lang;
+function addAdmin()
+{
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
-        $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
 
         if ($_FILES['file']['name'] != "") {
 
@@ -299,8 +354,6 @@ function addAdmin(){
                         imagedestroy($src);
                         imagedestroy($tmp);
                     }
-
-
                 }
                 //else if it's not bigger then 0, then it's available '
                 //and we send 1 to the ajax request
@@ -309,7 +362,7 @@ function addAdmin(){
                     $password = $_POST["password"];
                     $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
 
-                    $admins = ORM::for_table($config['db']['pre'].'admins')->create();
+                    $admins = ORM::for_table($config['db']['pre'] . 'admins')->create();
                     $admins->username = $_POST['username'];
                     $admins->password_hash = $pass_hash;
                     $admins->name = $_POST['name'];
@@ -320,24 +373,21 @@ function addAdmin(){
                     if ($admins->id()) {
                         $status = "success";
                         $message = $lang['SAVED_SUCCESS'];
-                    } else{
+                    } else {
                         $status = "error";
                         $message = $lang['ERROR_TRY_AGAIN'];
                     }
                 }
-            }
-            else {
+            } else {
                 $error = "Only allowed jpg, jpeg png";
                 $status = "error";
                 $message = $error;
             }
-
         } else {
             $error = "Profile Picture Required";
             $status = "error";
             $message = $error;
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -347,15 +397,15 @@ function addAdmin(){
     die();
 }
 
-function editAdmin(){
-    global $config,$lang;
+function editAdmin()
+{
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
         $password = $_POST["newPassword"];
 
-        if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "")
-        {
-            $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+        if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
+            $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
             $filename = stripslashes($_FILES['file']['name']);
             $ext = getExtension($filename);
             $ext = strtolower($ext);
@@ -363,9 +413,9 @@ function editAdmin(){
             if (in_array($ext, $valid_formats)) {
                 $uploaddir = '../storage/profile/';
                 $original_filename = $_FILES['file']['name'];
-                $random1 = rand(9999,100000);
-                $random2 = rand(9999,200000);
-                $random3 = $random1.$random2;
+                $random1 = rand(9999, 100000);
+                $random2 = rand(9999, 200000);
+                $random3 = $random1 . $random2;
                 $extensions = explode(".", $original_filename);
                 $extension = $extensions[count($extensions) - 1];
                 $uniqueName =  $random3 . "." . $extension;
@@ -408,33 +458,31 @@ function editAdmin(){
                         imagedestroy($src);
                         imagedestroy($tmp);
                     }
-
-
                 }
                 //else if it's not bigger then 0, then it's available '
                 //and we send 1 to the ajax request
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
 
-                    $info = ORM::for_table($config['db']['pre'].'admins')
+                    $info = ORM::for_table($config['db']['pre'] . 'admins')
                         ->select('image')
                         ->find_one($_POST['id']);
 
-                    if($info['image'] != "default_user.png"){
-                        if(file_exists($uploaddir.$info['image'])){
-                            unlink($uploaddir.$info['image']);
-                            unlink($uploaddir."small".$info['image']);
+                    if ($info['image'] != "default_user.png") {
+                        if (file_exists($uploaddir . $info['image'])) {
+                            unlink($uploaddir . $info['image']);
+                            unlink($uploaddir . "small" . $info['image']);
                         }
                     }
-                    if(!empty($password)){
+                    if (!empty($password)) {
                         $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
 
-                        $admins = ORM::for_table($config['db']['pre'].'admins')->find_one($_POST['id']);
+                        $admins = ORM::for_table($config['db']['pre'] . 'admins')->find_one($_POST['id']);
                         $admins->name = $_POST['name'];
                         $admins->password_hash = $pass_hash;
                         $admins->image = $uniqueName;
                         $admins->save();
-                    }else{
-                        $admins = ORM::for_table($config['db']['pre'].'admins')->find_one($_POST['id']);
+                    } else {
+                        $admins = ORM::for_table($config['db']['pre'] . 'admins')->find_one($_POST['id']);
                         $admins->name = $_POST['name'];
                         $admins->image = $uniqueName;
                         $admins->save();
@@ -443,32 +491,28 @@ function editAdmin(){
                     if (!$admins) {
                         $status = "error";
                         $message = $lang['ERROR_TRY_AGAIN'];
-                    } else{
+                    } else {
                         $status = "success";
                         $message = $lang['SAVED_SUCCESS'];
                     }
                 }
-            }
-            else {
+            } else {
                 $error = "Only allowed jpg, jpeg png";
                 $status = "error";
                 $message = $error;
             }
-
-        }
-        else{
-            if(!empty($password)){
+        } else {
+            if (!empty($password)) {
                 $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
 
-                $admins = ORM::for_table($config['db']['pre'].'admins')->find_one($_POST['id']);
+                $admins = ORM::for_table($config['db']['pre'] . 'admins')->find_one($_POST['id']);
                 $admins->name = validate_input($_POST['name']);
                 $admins->password_hash = $pass_hash;
                 $admins->username = $_POST["username"];
                 $admins->save();
+            } else {
 
-            }else{
-
-                $admins = ORM::for_table($config['db']['pre'].'admins')->find_one($_POST['id']);
+                $admins = ORM::for_table($config['db']['pre'] . 'admins')->find_one($_POST['id']);
                 $admins->name = validate_input($_POST['name']);
                 $admins->username = $_POST["username"];
                 $admins->save();
@@ -478,13 +522,11 @@ function editAdmin(){
             if (!$admins) {
                 $status = "error";
                 $message = $lang['ERROR_TRY_AGAIN'];
-            } else{
+            } else {
                 $status = "success";
                 $message = $lang['SAVED_SUCCESS'];
             }
         }
-
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -494,15 +536,15 @@ function editAdmin(){
     die();
 }
 
-function addUser(){
-    global $config,$lang;
+function addUser()
+{
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
         $image_name = 'default_user.png';
         $status = 'success';
-        if(isset($_FILES['file']['name']))
-        {
-            $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+        if (isset($_FILES['file']['name'])) {
+            $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
             $filename = stripslashes($_FILES['file']['name']);
             $ext = getExtension($filename);
             $ext = strtolower($ext);
@@ -510,12 +552,12 @@ function addUser(){
             if (in_array($ext, $valid_formats)) {
                 $uploaddir = '../storage/profile/';
                 $original_filename = $_FILES['file']['name'];
-                $random1 = rand(9999,100000);
-                $random2 = rand(9999,200000);
-                $random3 = $random1.$random2;
+                $random1 = rand(9999, 100000);
+                $random2 = rand(9999, 200000);
+                $random3 = $random1 . $random2;
                 $username = $_POST['username'];
-                $image_name = $username.'_'.$random1.$random2.'.'.$ext;
-                $image_name1 = 'small_'.$username.'_'.$random1.$random2.'.'.$ext;
+                $image_name = $username . '_' . $random1 . $random2 . '.' . $ext;
+                $image_name1 = 'small_' . $username . '_' . $random1 . $random2 . '.' . $ext;
 
                 $filename = $uploaddir . $image_name;
                 $filename1 = $uploaddir . $image_name1;
@@ -528,21 +570,19 @@ function addUser(){
                     resize_crop_image(200, 200, $filename1, $uploadedfile);
                     //$time = date('Y-m-d H:i:s', time());
                     $status = 'success';
-                }else{
+                } else {
                     $error = "Image not uploaded.";
                     $status = "error";
                     $message = $error;
                 }
-            }
-            else {
+            } else {
                 $error = "Only allowed jpg, jpeg png";
                 $status = "error";
                 $message = $error;
             }
-
         }
 
-        if($status != "error") {
+        if ($status != "error") {
             $password = $_POST["password"];
             $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
             $now = date("Y-m-d H:i:s");
@@ -569,7 +609,6 @@ function addUser(){
                 $message = $lang['ERROR_TRY_AGAIN'];
             }
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -579,25 +618,25 @@ function addUser(){
     die();
 }
 
-function editUser(){
-    global $config,$lang;
+function editUser()
+{
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
         $password = $_POST["password"];
         $status = 'success';
         $now = date("Y-m-d H:i:s");
-        $user_update = ORM::for_table($config['db']['pre'].'user')->find_one($_POST['id']);
+        $user_update = ORM::for_table($config['db']['pre'] . 'user')->find_one($_POST['id']);
 
         /* Update Password */
-        if(!empty($password)){
+        if (!empty($password)) {
             $pass_hash = password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
             $user_update->set('password_hash', $pass_hash);
         }
 
         /* Update Image */
-        if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "")
-        {
-            $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+        if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
+            $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
             $filename = stripslashes($_FILES['file']['name']);
             $ext = getExtension($filename);
             $ext = strtolower($ext);
@@ -605,11 +644,11 @@ function editUser(){
             if (in_array($ext, $valid_formats)) {
                 $uploaddir = '../storage/profile/';
                 $original_filename = $_FILES['file']['name'];
-                $random1 = rand(9999,100000);
-                $random2 = rand(9999,200000);
+                $random1 = rand(9999, 100000);
+                $random2 = rand(9999, 200000);
 
-                $image_name = $random1.$random2.'.'.$ext;
-                $image_name1 = 'small_'.$random1.$random2.'.'.$ext;
+                $image_name = $random1 . $random2 . '.' . $ext;
+                $image_name1 = 'small_' . $random1 . $random2 . '.' . $ext;
 
                 $filename = $uploaddir . $image_name;
                 $filename1 = $uploaddir . $image_name1;
@@ -621,10 +660,10 @@ function editUser(){
                 if (resizeImage(500, $filename, $uploadedfile)) {
                     resize_crop_image(200, 200, $filename1, $uploadedfile);
 
-                    if($user_update['image'] != "default_user.png"){
-                        if(file_exists($uploaddir.$user_update['image'])){
-                            unlink($uploaddir.$user_update['image']);
-                            unlink($uploaddir."small_".$user_update['image']);
+                    if ($user_update['image'] != "default_user.png") {
+                        if (file_exists($uploaddir . $user_update['image'])) {
+                            unlink($uploaddir . $user_update['image']);
+                            unlink($uploaddir . "small_" . $user_update['image']);
                         }
                     }
 
@@ -638,23 +677,23 @@ function editUser(){
             }
         }
 
-        if($status != "error") {
+        if ($status != "error") {
             /* Update plan */
-            $subsc_check = ORM::for_table($config['db']['pre'].'upgrades')
+            $subsc_check = ORM::for_table($config['db']['pre'] . 'upgrades')
                 ->where('user_id', $_POST['id'])
                 ->count();
-            if($_POST['current_plan'] != 'free'){
+            if ($_POST['current_plan'] != 'free') {
                 $expires = strtotime($_POST['plan_expiration_date']);
-                if($subsc_check == 1){
+                if ($subsc_check == 1) {
                     $pdo = ORM::get_db();
 
-                    $query = "UPDATE `".$config['db']['pre']."upgrades` SET 
-                    `sub_id` = '".validate_input($_POST['current_plan'])."',
-                    `upgrade_expires` = '".validate_input($expires)."' 
-                    WHERE `user_id` = '".validate_input($_POST['id'])."' LIMIT 1 ";
+                    $query = "UPDATE `" . $config['db']['pre'] . "upgrades` SET 
+                    `sub_id` = '" . validate_input($_POST['current_plan']) . "',
+                    `upgrade_expires` = '" . validate_input($expires) . "' 
+                    WHERE `user_id` = '" . validate_input($_POST['id']) . "' LIMIT 1 ";
                     $pdo->query($query);
-                }else{
-                    $upgrades_insert = ORM::for_table($config['db']['pre'].'upgrades')->create();
+                } else {
+                    $upgrades_insert = ORM::for_table($config['db']['pre'] . 'upgrades')->create();
                     $upgrades_insert->sub_id = $_POST['current_plan'];
                     $upgrades_insert->user_id = $_POST['id'];
                     $upgrades_insert->upgrade_lasttime = time();
@@ -662,8 +701,8 @@ function editUser(){
                     $upgrades_insert->status = "Active";
                     $upgrades_insert->save();
                 }
-            }else{
-                ORM::for_table($config['db']['pre'].'upgrades')
+            } else {
+                ORM::for_table($config['db']['pre'] . 'upgrades')
                     ->where_equal('user_id', $_POST['id'])
                     ->delete_many();
             }
@@ -685,12 +724,11 @@ function editUser(){
             if ($user_update) {
                 $status = "success";
                 $message = $lang['SAVED_SUCCESS'];
-            } else{
+            } else {
                 $status = "error";
                 $message = $lang['ERROR_TRY_AGAIN'];
             }
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -702,13 +740,13 @@ function editUser(){
 
 function addCurrency()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
         $in_left = isset($_POST['in_left']) ? '1' : '0';
 
-        $insert_currency = ORM::for_table($config['db']['pre'].'currencies')->create();
+        $insert_currency = ORM::for_table($config['db']['pre'] . 'currencies')->create();
         $insert_currency->name = $_POST['name'];
         $insert_currency->code = $_POST['code'];
         $insert_currency->html_entity = $_POST['html_entity'];
@@ -725,7 +763,7 @@ function addCurrency()
         if ($insert_currency->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
@@ -740,12 +778,12 @@ function addCurrency()
 
 function editCurrency()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
         $in_left = isset($_POST['in_left']) ? '1' : '0';
 
-        $update_currency = ORM::for_table($config['db']['pre'].'currencies')->find_one($_POST['id']);
+        $update_currency = ORM::for_table($config['db']['pre'] . 'currencies')->find_one($_POST['id']);
         $update_currency->set('name', $_POST['name']);
         $update_currency->set('code', $_POST['code']);
         $update_currency->set('html_entity', $_POST['html_entity']);
@@ -762,11 +800,10 @@ function editCurrency()
         if ($update_currency) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -778,11 +815,11 @@ function editCurrency()
 
 function addTimezone()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
-        $insert_timezone = ORM::for_table($config['db']['pre'].'time_zones')->create();
+        $insert_timezone = ORM::for_table($config['db']['pre'] . 'time_zones')->create();
         $insert_timezone->country_code = $_POST['country_code'];
         $insert_timezone->time_zone_id = $_POST['time_zone_id'];
         $insert_timezone->gmt = $_POST['gmt'];
@@ -793,11 +830,10 @@ function addTimezone()
         if ($insert_timezone->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -809,11 +845,11 @@ function addTimezone()
 
 function editTimezone()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
 
-        $update_timezone = ORM::for_table($config['db']['pre'].'time_zones')->find_one($_POST['id']);
+        $update_timezone = ORM::for_table($config['db']['pre'] . 'time_zones')->find_one($_POST['id']);
         $update_timezone->set('country_code', $_POST['country_code']);
         $update_timezone->set('time_zone_id', $_POST['time_zone_id']);
         $update_timezone->set('gmt', $_POST['gmt']);
@@ -824,11 +860,10 @@ function editTimezone()
         if ($update_timezone) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -841,7 +876,7 @@ function editTimezone()
 
 function addMembershipPlan()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
@@ -851,29 +886,29 @@ function addMembershipPlan()
         $settings = array(
             'category_limit' => (int) $_POST['category_limit'],
             'menu_limit' => (int) $_POST['menu_limit'],
-            'scan_limit' =>(int) $_POST['scan_limit'],
+            'scan_limit' => (int) $_POST['scan_limit'],
             'allow_ordering' => (int) isset($_POST['allow_ordering']),
             'custom' => array()
         );
 
-        $plan_custom = ORM::for_table($config['db']['pre'].'plan_options')
+        $plan_custom = ORM::for_table($config['db']['pre'] . 'plan_options')
             ->where('active', 1)
             ->order_by_asc('position')
             ->find_many();
-        foreach ($plan_custom as $custom){
-            if(!empty($custom['title']) && trim($custom['title']) != '' && !empty($_POST['custom_'.$custom['id']])) {
+        foreach ($plan_custom as $custom) {
+            if (!empty($custom['title']) && trim($custom['title']) != '' && !empty($_POST['custom_' . $custom['id']])) {
                 $settings['custom'][$custom['id']] = 1;
             }
         }
 
-        $insert_subscription = ORM::for_table($config['db']['pre'].'plans')->create();
+        $insert_subscription = ORM::for_table($config['db']['pre'] . 'plans')->create();
         $insert_subscription->name = validate_input($_POST['name']);
         $insert_subscription->badge = $_POST['badge'];
         $insert_subscription->monthly_price = $_POST['monthly_price'];
         $insert_subscription->annual_price = $_POST['annual_price'];
         $insert_subscription->lifetime_price = $_POST['lifetime_price'];
         $insert_subscription->settings = json_encode($settings);
-        $insert_subscription->taxes_ids = isset($_POST['taxes'])? validate_input(implode(',',$_POST['taxes'])) : null;
+        $insert_subscription->taxes_ids = isset($_POST['taxes']) ? validate_input(implode(',', $_POST['taxes'])) : null;
         $insert_subscription->status = $active;
         $insert_subscription->recommended = $recommended;
         $insert_subscription->date = date('Y-m-d H:i:s');
@@ -882,11 +917,10 @@ function addMembershipPlan()
         if ($insert_subscription->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -898,7 +932,7 @@ function addMembershipPlan()
 
 function editMembershipPlan()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
         $active = isset($_POST['active']) ? 1 : 0;
@@ -906,22 +940,22 @@ function editMembershipPlan()
         $settings = array(
             'category_limit' => (int) $_POST['category_limit'],
             'menu_limit' => (int) $_POST['menu_limit'],
-            'scan_limit' =>(int) $_POST['scan_limit'],
+            'scan_limit' => (int) $_POST['scan_limit'],
             'allow_ordering' => (int) isset($_POST['allow_ordering']),
             'custom' => array()
         );
 
-        $plan_custom = ORM::for_table($config['db']['pre'].'plan_options')
+        $plan_custom = ORM::for_table($config['db']['pre'] . 'plan_options')
             ->where('active', 1)
             ->order_by_asc('position')
             ->find_many();
-        foreach ($plan_custom as $custom){
-            if(!empty($custom['title']) && trim($custom['title']) != '' && !empty($_POST['custom_'.$custom['id']])) {
+        foreach ($plan_custom as $custom) {
+            if (!empty($custom['title']) && trim($custom['title']) != '' && !empty($_POST['custom_' . $custom['id']])) {
                 $settings['custom'][$custom['id']] = 1;
             }
         }
 
-        switch ($_POST['id']){
+        switch ($_POST['id']) {
             case 'free':
                 $plan = json_encode(array(
                     'id' => 'free',
@@ -946,14 +980,14 @@ function editMembershipPlan()
             default:
                 $recommended = isset($_POST['recommended']) ? "yes" : "no";
 
-                $insert_subscription = ORM::for_table($config['db']['pre'].'plans')->find_one($_POST['id']);
+                $insert_subscription = ORM::for_table($config['db']['pre'] . 'plans')->find_one($_POST['id']);
                 $insert_subscription->name = validate_input($_POST['name']);
                 $insert_subscription->badge = $_POST['badge'];
                 $insert_subscription->monthly_price = $_POST['monthly_price'];
                 $insert_subscription->annual_price = $_POST['annual_price'];
                 $insert_subscription->lifetime_price = $_POST['lifetime_price'];
                 $insert_subscription->settings = json_encode($settings);
-                $insert_subscription->taxes_ids = isset($_POST['taxes'])? validate_input(implode(',',$_POST['taxes'])) : null;
+                $insert_subscription->taxes_ids = isset($_POST['taxes']) ? validate_input(implode(',', $_POST['taxes'])) : null;
                 $insert_subscription->status = $active;
                 $insert_subscription->recommended = $recommended;
                 $insert_subscription->date = date('Y-m-d H:i:s');
@@ -963,7 +997,6 @@ function editMembershipPlan()
 
         $status = "success";
         $message = $lang['SAVED_SUCCESS'];
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -975,7 +1008,7 @@ function editMembershipPlan()
 
 function addMembershipPackage()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
@@ -985,7 +1018,7 @@ function addMembershipPackage()
         $menu_limit = isset($_POST['menu_limit']) ? $_POST['menu_limit'] : 0;
         $scan_limit = isset($_POST['scan_limit']) ? $_POST['scan_limit'] : 0;
 
-        $insert_usergroup = ORM::for_table($config['db']['pre'].'usergroups')->create();
+        $insert_usergroup = ORM::for_table($config['db']['pre'] . 'usergroups')->create();
         $insert_usergroup->group_name = $_POST['group_name'];
         $insert_usergroup->category_limit = $category_limit;
         $insert_usergroup->menu_limit = $menu_limit;
@@ -996,11 +1029,10 @@ function addMembershipPackage()
         if ($insert_usergroup->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1012,7 +1044,7 @@ function addMembershipPackage()
 
 function editMembershipPackage()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
         $removable = isset($_POST['group_removable']) ? $_POST['group_removable'] : 0;
@@ -1022,24 +1054,23 @@ function editMembershipPackage()
         $scan_limit = isset($_POST['scan_limit']) ? $_POST['scan_limit'] : 0;
 
         $pdo = ORM::get_db();
-        $query = "UPDATE `".$config['db']['pre']."usergroups` SET
+        $query = "UPDATE `" . $config['db']['pre'] . "usergroups` SET
         `group_name` = '" . validate_input($_POST['group_name']) . "',
         `group_removable` = '" . validate_input($removable) . "',
         `category_limit` = '" . validate_input($category_limit) . "',
         `menu_limit` = '" . validate_input($menu_limit) . "',
         `scan_limit` = '" . validate_input($scan_limit) . "'
-        WHERE `group_id` = '".validate_input($_POST['id'])."' LIMIT 1 ";
+        WHERE `group_id` = '" . validate_input($_POST['id']) . "' LIMIT 1 ";
 
         $query_result = $pdo->query($query);
 
         if ($query_result) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1051,11 +1082,11 @@ function editMembershipPackage()
 
 function addTax()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
-        $insert_tax = ORM::for_table($config['db']['pre'].'taxes')->create();
+        $insert_tax = ORM::for_table($config['db']['pre'] . 'taxes')->create();
         $insert_tax->internal_name = validate_input($_POST['internal_name']);
         $insert_tax->name = validate_input($_POST['name']);
         $insert_tax->description = validate_input($_POST['description']);
@@ -1063,18 +1094,17 @@ function addTax()
         $insert_tax->value_type = validate_input($_POST['value_type']);
         $insert_tax->type = validate_input($_POST['type']);
         $insert_tax->billing_type = validate_input($_POST['billing_type']);
-        $insert_tax->countries = isset($_POST['countries'])? validate_input(implode(',',$_POST['countries'])) : null;
+        $insert_tax->countries = isset($_POST['countries']) ? validate_input(implode(',', $_POST['countries'])) : null;
         $insert_tax->datetime = date('Y-m-d H:i:s');
         $insert_tax->save();
 
         if ($insert_tax->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1086,11 +1116,11 @@ function addTax()
 
 function editTax()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['submit'])) {
 
-        $insert_tax = ORM::for_table($config['db']['pre'].'taxes')->find_one($_POST['id']);
+        $insert_tax = ORM::for_table($config['db']['pre'] . 'taxes')->find_one($_POST['id']);
         $insert_tax->internal_name = validate_input($_POST['internal_name']);
         $insert_tax->name = validate_input($_POST['name']);
         $insert_tax->description = validate_input($_POST['description']);
@@ -1098,17 +1128,16 @@ function editTax()
         $insert_tax->value_type = validate_input($_POST['value_type']);
         $insert_tax->type = validate_input($_POST['type']);
         $insert_tax->billing_type = validate_input($_POST['billing_type']);
-        $insert_tax->countries = isset($_POST['countries'])? validate_input(implode(',',$_POST['countries'])) : null;
+        $insert_tax->countries = isset($_POST['countries']) ? validate_input(implode(',', $_POST['countries'])) : null;
         $insert_tax->save();
 
         if ($insert_tax->id()) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1120,13 +1149,13 @@ function editTax()
 
 function addLanguage()
 {
-    global $config,$lang;
+    global $config, $lang;
     if (isset($_POST['submit'])) {
-        if(isset($_POST['name']) && $_POST['name'] != ""){
+        if (isset($_POST['name']) && $_POST['name'] != "") {
 
             $post_langname = str_replace(' ', '', strtolower($_POST['name']));
 
-            $filePath = '../includes/lang/lang_'.$post_langname.'.php';
+            $filePath = '../includes/lang/lang_' . $post_langname . '.php';
             if (!file_exists($filePath)) {
                 $source = 'en';
                 $target = $_POST['code'];
@@ -1135,23 +1164,22 @@ function addLanguage()
 
                 $trans = new GoogleTranslate();
                 $newLangArray = array();
-                foreach ($lang as $key => $value)
-                {
-                    if($auto_translate == 1){
+                foreach ($lang as $key => $value) {
+                    if ($auto_translate == 1) {
                         $result = $trans->translate($source, $target, $value);
-                        $result = !empty($result)?$result:$value;
-                    }else{
+                        $result = !empty($result) ? $result : $value;
+                    } else {
                         $result = $value;
                     }
 
                     $newLangArray[$key] = $result;
                 }
                 fopen($filePath, "w");
-                change_config_file_settings($filePath, $newLangArray,$lang);
+                change_config_file_settings($filePath, $newLangArray, $lang);
 
                 $lang_filename = $post_langname;
 
-                $insert_language = ORM::for_table($config['db']['pre'].'languages')->create();
+                $insert_language = ORM::for_table($config['db']['pre'] . 'languages')->create();
                 $insert_language->code = $_POST['code'];
                 $insert_language->name = $post_langname;
                 $insert_language->direction = $_POST['direction'];
@@ -1162,22 +1190,19 @@ function addLanguage()
                 if ($insert_language->id()) {
                     $status = "success";
                     $message = $lang['SAVED_SUCCESS'];
-                } else{
+                } else {
                     $status = "error";
                     $message = $lang['ERROR_TRY_AGAIN'];
                 }
-
-
             } else {
                 $message = "Same language file is exist. Change language name.";
                 echo $json = '{"status" : "error","message" : "' . $message . '"}';
                 die();
             }
-        }else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1189,14 +1214,14 @@ function addLanguage()
 
 function editLanguage()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
 
         $active = isset($_POST['active']) ? '1' : '0';
         $lang_filename = strtolower($_POST['name']);
 
-        $update_language = ORM::for_table($config['db']['pre'].'languages')->find_one($_POST['id']);
+        $update_language = ORM::for_table($config['db']['pre'] . 'languages')->find_one($_POST['id']);
         $update_language->set('code', $_POST['code']);
         $update_language->set('name', $_POST['name']);
         $update_language->set('direction', $_POST['direction']);
@@ -1207,12 +1232,10 @@ function editLanguage()
         if ($update_language) {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-        } else{
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
-
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1224,7 +1247,7 @@ function editLanguage()
 
 function addStaticPage()
 {
-    global $config,$lang;
+    global $config, $lang;
     $errors = array();
     $response = array();
 
@@ -1244,9 +1267,9 @@ function addStaticPage()
                 $slug = create_slug($_POST['name']);
             else
                 $slug = create_slug($_POST['slug']);
-                $active = isset($_POST['active']) ? '1' : '0';
+            $active = isset($_POST['active']) ? '1' : '0';
 
-            $insert_page = ORM::for_table($config['db']['pre'].'pages')->create();
+            $insert_page = ORM::for_table($config['db']['pre'] . 'pages')->create();
             $insert_page->translation_lang = 'en';
             $insert_page->name = $_POST['name'];
             $insert_page->title = $_POST['title'];
@@ -1258,19 +1281,19 @@ function addStaticPage()
 
             $id = $insert_page->id();
 
-            $update_page = ORM::for_table($config['db']['pre'].'pages')->find_one($id);
+            $update_page = ORM::for_table($config['db']['pre'] . 'pages')->find_one($id);
             $update_page->set('translation_of', $id);
             $update_page->set('parent_id', $id);
             $update_page->save();
 
-            $rows = ORM::for_table($config['db']['pre'].'languages')
-                ->select_many('code','name')
+            $rows = ORM::for_table($config['db']['pre'] . 'languages')
+                ->select_many('code', 'name')
                 ->where('active', '1')
                 ->where_not_equal('code', 'en')
                 ->find_many();
 
-            foreach ($rows as $fetch){
-                $insert_page = ORM::for_table($config['db']['pre'].'pages')->create();
+            foreach ($rows as $fetch) {
+                $insert_page = ORM::for_table($config['db']['pre'] . 'pages')->create();
                 $insert_page->translation_lang = $fetch['code'];
                 $insert_page->translation_of = $id;
                 $insert_page->parent_id = $id;
@@ -1281,7 +1304,6 @@ function addStaticPage()
                 $insert_page->type = $_POST['type'];
                 $insert_page->active = $active;
                 $insert_page->save();
-
             }
 
             $status = "success";
@@ -1289,7 +1311,7 @@ function addStaticPage()
 
             echo $json = '{"id" : "' . $id . '","status" : "' . $status . '","message" : "' . $message . '"}';
             die();
-        }else {
+        } else {
             $status = "error";
             $message = $lang['ERROR'];
         }
@@ -1305,7 +1327,7 @@ function addStaticPage()
 
 function editStaticPage()
 {
-    global $config,$lang;
+    global $config, $lang;
     $errors = array();
     $response = array();
 
@@ -1327,9 +1349,9 @@ function editStaticPage()
                 $slug = create_slug($_POST['slug']);
             $active = isset($_POST['active']) ? '1' : '0';
 
-            $update_page = ORM::for_table($config['db']['pre'].'pages')->find_one($_POST['id']);
+            $update_page = ORM::for_table($config['db']['pre'] . 'pages')->find_one($_POST['id']);
 
-            if(isset($update_page['slug'])) {
+            if (isset($update_page['slug'])) {
                 $update_page->set('name', $_POST['name']);
                 $update_page->set('title', $_POST['title']);
                 $update_page->set('content', $_POST['content']);
@@ -1338,8 +1360,8 @@ function editStaticPage()
                 $update_page->set('active', $active);
                 $update_page->save();
             } else {
-                if(isset($_POST['parent'], $_POST['lang'])){
-                    $insert_page = ORM::for_table($config['db']['pre'].'pages')->create();
+                if (isset($_POST['parent'], $_POST['lang'])) {
+                    $insert_page = ORM::for_table($config['db']['pre'] . 'pages')->create();
                     $insert_page->translation_lang = $_POST['lang'];
                     $insert_page->translation_of = $_POST['parent'];
                     $insert_page->parent_id = $_POST['parent'];
@@ -1358,7 +1380,7 @@ function editStaticPage()
 
             echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
             die();
-        }else {
+        } else {
             $status = "error";
             $message = $lang['ERROR'];
         }
@@ -1374,7 +1396,7 @@ function editStaticPage()
 
 function addFAQentry()
 {
-    global $config,$lang;
+    global $config, $lang;
     $errors = array();
 
     if (isset($_POST['submit'])) {
@@ -1388,7 +1410,7 @@ function addFAQentry()
         if (!count($errors) > 0) {
             $active = isset($_POST['active']) ? '1' : '0';
 
-            $insert_faq = ORM::for_table($config['db']['pre'].'faq_entries')->create();
+            $insert_faq = ORM::for_table($config['db']['pre'] . 'faq_entries')->create();
             $insert_faq->translation_lang = 'en';
             $insert_faq->faq_title = $_POST['title'];
             $insert_faq->faq_content = $_POST['content'];
@@ -1398,20 +1420,20 @@ function addFAQentry()
             $id = $insert_faq->id();
 
             $pdo = ORM::get_db();
-            $query = "UPDATE `".$config['db']['pre']."faq_entries` SET
-                `translation_of` = '".validate_input($id)."',
-                `parent_id` = '".validate_input($id)."'
-                 WHERE `faq_id` = '".validate_input($id)."' LIMIT 1 ";
+            $query = "UPDATE `" . $config['db']['pre'] . "faq_entries` SET
+                `translation_of` = '" . validate_input($id) . "',
+                `parent_id` = '" . validate_input($id) . "'
+                 WHERE `faq_id` = '" . validate_input($id) . "' LIMIT 1 ";
             $query_result = $pdo->query($query);
 
-            $rows = ORM::for_table($config['db']['pre'].'languages')
-                ->select_many('code','name')
+            $rows = ORM::for_table($config['db']['pre'] . 'languages')
+                ->select_many('code', 'name')
                 ->where('active', '1')
                 ->where_not_equal('code', 'en')
                 ->find_many();
 
-            foreach ($rows as $fetch){
-                $insert_faq = ORM::for_table($config['db']['pre'].'faq_entries')->create();
+            foreach ($rows as $fetch) {
+                $insert_faq = ORM::for_table($config['db']['pre'] . 'faq_entries')->create();
                 $insert_faq->translation_lang = $fetch['code'];
                 $insert_faq->translation_of = $id;
                 $insert_faq->parent_id = $id;
@@ -1426,7 +1448,7 @@ function addFAQentry()
 
             echo $json = '{"id" : "' . $id . '","status" : "' . $status . '","message" : "' . $message . '"}';
             die();
-        }else {
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
@@ -1442,7 +1464,7 @@ function addFAQentry()
 
 function editFAQentry()
 {
-    global $config,$lang;
+    global $config, $lang;
     $errors = array();
     $response = array();
 
@@ -1456,11 +1478,11 @@ function editFAQentry()
         if (!count($errors) > 0) {
             $active = isset($_POST['active']) ? '1' : '0';
 
-            $info = ORM::for_table($config['db']['pre'].'faq_entries')
-                ->where('faq_id',$_POST['id'])
+            $info = ORM::for_table($config['db']['pre'] . 'faq_entries')
+                ->where('faq_id', $_POST['id'])
                 ->find_one();
 
-            if(isset($info['faq_title'])) {
+            if (isset($info['faq_title'])) {
                 $pdo = ORM::get_db();
                 $query = "UPDATE `" . $config['db']['pre'] . "faq_entries` SET
                 `faq_title` = '" . validate_input($_POST['title']) . "',
@@ -1469,8 +1491,8 @@ function editFAQentry()
                  WHERE `faq_id` = '" . $_POST['id'] . "' LIMIT 1 ";
                 $pdo->query($query);
             } else {
-                if(isset($_POST['parent'], $_POST['lang']))
-                $insert_faq = ORM::for_table($config['db']['pre'].'faq_entries')->create();
+                if (isset($_POST['parent'], $_POST['lang']))
+                    $insert_faq = ORM::for_table($config['db']['pre'] . 'faq_entries')->create();
                 $insert_faq->translation_lang = $_POST['lang'];
                 $insert_faq->translation_of = $_POST['parent'];
                 $insert_faq->parent_id = $_POST['parent'];
@@ -1485,7 +1507,7 @@ function editFAQentry()
 
             echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
             die();
-        }else {
+        } else {
             $status = "error";
             $message = $lang['ERROR'];
         }
@@ -1501,7 +1523,7 @@ function editFAQentry()
 
 function transactionEdit()
 {
-    global $config,$lang;
+    global $config, $lang;
     $errors = array();
     $response = array();
 
@@ -1509,19 +1531,17 @@ function transactionEdit()
 
         if (isset($_POST['status'])) {
 
-            if($_POST['status'] == "success"){
+            if ($_POST['status'] == "success") {
                 $transaction_id = $_POST['id'];
                 transaction_success($transaction_id);
-            }else{
-                $transaction = ORM::for_table($config['db']['pre'].'transaction')->find_one($_POST['id']);
+            } else {
+                $transaction = ORM::for_table($config['db']['pre'] . 'transaction')->find_one($_POST['id']);
                 $transaction->status = $_POST['status'];
                 $transaction->save();
             }
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
-
-
-        }else {
+        } else {
             $status = "error";
             $message = $lang['ERROR_TRY_AGAIN'];
         }
@@ -1536,13 +1556,13 @@ function transactionEdit()
 
 function editAdvertise()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
 
         $status = isset($_POST['status']) ? '1' : '0';
 
-        $update_adsense = ORM::for_table($config['db']['pre'].'adsense')->find_one($_POST['id']);
+        $update_adsense = ORM::for_table($config['db']['pre'] . 'adsense')->find_one($_POST['id']);
         $update_adsense->set('provider_name', $_POST['provider_name']);
         $update_adsense->set('status', $status);
         $update_adsense->set('large_track_code', $_POST['large_track_code']);
@@ -1552,7 +1572,6 @@ function editAdvertise()
 
         $status = "success";
         $message = $lang['SAVED_SUCCESS'];
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1564,86 +1583,85 @@ function editAdvertise()
 
 function paymentEdit()
 {
-    global $config,$lang;
+    global $config, $lang;
 
     if (isset($_POST['id'])) {
 
         $pdo = ORM::get_db();
-        $query = "UPDATE `".$config['db']['pre']."payments` SET
+        $query = "UPDATE `" . $config['db']['pre'] . "payments` SET
             `payment_title` = '" . validate_input($_POST['title']) . "',
             `payment_install` = '" . validate_input($_POST['install']) . "'
-            WHERE `payment_id` = '".$_POST['id']."' LIMIT 1 ";
+            WHERE `payment_id` = '" . $_POST['id'] . "' LIMIT 1 ";
         $query_result = $pdo->query($query);
 
-        if(isset($_POST['paypal_sandbox_mode'])){
-            update_option("paypal_sandbox_mode",isset($_POST['paypal_sandbox_mode'])? $_POST['paypal_sandbox_mode'] : "");
-            update_option("paypal_payment_mode",isset($_POST['paypal_payment_mode'])? $_POST['paypal_payment_mode'] : "");
-            update_option("paypal_api_client_id",isset($_POST['paypal_api_client_id'])? $_POST['paypal_api_client_id'] : "");
-            update_option("paypal_api_secret",isset($_POST['paypal_api_secret'])? $_POST['paypal_api_secret'] : "");
+        if (isset($_POST['paypal_sandbox_mode'])) {
+            update_option("paypal_sandbox_mode", isset($_POST['paypal_sandbox_mode']) ? $_POST['paypal_sandbox_mode'] : "");
+            update_option("paypal_payment_mode", isset($_POST['paypal_payment_mode']) ? $_POST['paypal_payment_mode'] : "");
+            update_option("paypal_api_client_id", isset($_POST['paypal_api_client_id']) ? $_POST['paypal_api_client_id'] : "");
+            update_option("paypal_api_secret", isset($_POST['paypal_api_secret']) ? $_POST['paypal_api_secret'] : "");
         }
 
-        if(isset($_POST['stripe_secret_key'])){
-            update_option("stripe_payment_mode",$_POST['stripe_payment_mode']);
-            update_option("stripe_publishable_key",$_POST['stripe_publishable_key']);
-            update_option("stripe_secret_key",$_POST['stripe_secret_key']);
-            update_option("stripe_webhook_secret",$_POST['stripe_webhook_secret']);
+        if (isset($_POST['stripe_secret_key'])) {
+            update_option("stripe_payment_mode", $_POST['stripe_payment_mode']);
+            update_option("stripe_publishable_key", $_POST['stripe_publishable_key']);
+            update_option("stripe_secret_key", $_POST['stripe_secret_key']);
+            update_option("stripe_webhook_secret", $_POST['stripe_webhook_secret']);
         }
 
-        if(isset($_POST['paystack_public_key'])){
-            update_option("paystack_public_key",$_POST['paystack_public_key']);
-            update_option("paystack_secret_key",$_POST['paystack_secret_key']);
+        if (isset($_POST['paystack_public_key'])) {
+            update_option("paystack_public_key", $_POST['paystack_public_key']);
+            update_option("paystack_secret_key", $_POST['paystack_secret_key']);
         }
 
-        if(isset($_POST['payumoney_merchant_key'])){
-            update_option("payumoney_sandbox_mode",$_POST['payumoney_sandbox_mode']);
-            update_option("payumoney_merchant_key",$_POST['payumoney_merchant_key']);
-            update_option("payumoney_merchant_salt",$_POST['payumoney_merchant_salt']);
-            update_option("payumoney_merchant_id",$_POST['payumoney_merchant_id']);
+        if (isset($_POST['payumoney_merchant_key'])) {
+            update_option("payumoney_sandbox_mode", $_POST['payumoney_sandbox_mode']);
+            update_option("payumoney_merchant_key", $_POST['payumoney_merchant_key']);
+            update_option("payumoney_merchant_salt", $_POST['payumoney_merchant_salt']);
+            update_option("payumoney_merchant_id", $_POST['payumoney_merchant_id']);
         }
 
-        if(isset($_POST['checkout_account_number'])){
-            update_option("2checkout_sandbox_mode",$_POST['2checkout_sandbox_mode']);
-            update_option("checkout_account_number",$_POST['checkout_account_number']);
-            update_option("checkout_public_key",$_POST['checkout_public_key']);
-            update_option("checkout_private_key",$_POST['checkout_private_key']);
+        if (isset($_POST['checkout_account_number'])) {
+            update_option("2checkout_sandbox_mode", $_POST['2checkout_sandbox_mode']);
+            update_option("checkout_account_number", $_POST['checkout_account_number']);
+            update_option("checkout_public_key", $_POST['checkout_public_key']);
+            update_option("checkout_private_key", $_POST['checkout_private_key']);
         }
 
-        if(isset($_POST['company_bank_info'])){
-            update_option("company_bank_info",$_POST['company_bank_info']);
+        if (isset($_POST['company_bank_info'])) {
+            update_option("company_bank_info", $_POST['company_bank_info']);
         }
 
-        if(isset($_POST['company_cheque_info'])){
-            update_option("company_cheque_info",$_POST['company_cheque_info']);
-            update_option("cheque_payable_to",$_POST['cheque_payable_to']);
+        if (isset($_POST['company_cheque_info'])) {
+            update_option("company_cheque_info", $_POST['company_cheque_info']);
+            update_option("cheque_payable_to", $_POST['cheque_payable_to']);
         }
 
-        if(isset($_POST['skrill_merchant_id'])){
-            update_option("skrill_merchant_id",$_POST['skrill_merchant_id']);
+        if (isset($_POST['skrill_merchant_id'])) {
+            update_option("skrill_merchant_id", $_POST['skrill_merchant_id']);
         }
 
-        if(isset($_POST['nochex_merchant_id'])){
-            update_option("nochex_merchant_id",$_POST['nochex_merchant_id']);
+        if (isset($_POST['nochex_merchant_id'])) {
+            update_option("nochex_merchant_id", $_POST['nochex_merchant_id']);
         }
 
-        if(isset($_POST['CCAVENUE_MERCHANT_KEY'])){
-            update_option("CCAVENUE_MERCHANT_KEY",$_POST['CCAVENUE_MERCHANT_KEY']);
-            update_option("CCAVENUE_ACCESS_CODE",$_POST['CCAVENUE_ACCESS_CODE']);
-            update_option("CCAVENUE_WORKING_KEY",$_POST['CCAVENUE_WORKING_KEY']);
+        if (isset($_POST['CCAVENUE_MERCHANT_KEY'])) {
+            update_option("CCAVENUE_MERCHANT_KEY", $_POST['CCAVENUE_MERCHANT_KEY']);
+            update_option("CCAVENUE_ACCESS_CODE", $_POST['CCAVENUE_ACCESS_CODE']);
+            update_option("CCAVENUE_WORKING_KEY", $_POST['CCAVENUE_WORKING_KEY']);
         }
 
-        if(isset($_POST['PAYTM_ENVIRONMENT'])){
-            update_option("PAYTM_ENVIRONMENT",$_POST['PAYTM_ENVIRONMENT']);
-            update_option("PAYTM_MERCHANT_KEY",$_POST['PAYTM_MERCHANT_KEY']);
-            update_option("PAYTM_MERCHANT_MID",$_POST['PAYTM_MERCHANT_MID']);
-            update_option("PAYTM_MERCHANT_WEBSITE",$_POST['PAYTM_MERCHANT_WEBSITE']);
+        if (isset($_POST['PAYTM_ENVIRONMENT'])) {
+            update_option("PAYTM_ENVIRONMENT", $_POST['PAYTM_ENVIRONMENT']);
+            update_option("PAYTM_MERCHANT_KEY", $_POST['PAYTM_MERCHANT_KEY']);
+            update_option("PAYTM_MERCHANT_MID", $_POST['PAYTM_MERCHANT_MID']);
+            update_option("PAYTM_MERCHANT_WEBSITE", $_POST['PAYTM_MERCHANT_WEBSITE']);
         }
 
-        if(isset($_POST['mollie_api_key'])){
-            update_option("mollie_api_key",$_POST['mollie_api_key']);
+        if (isset($_POST['mollie_api_key'])) {
+            update_option("mollie_api_key", $_POST['mollie_api_key']);
         }
         $status = "success";
         $message = $lang['SAVED_SUCCESS'];
-
     } else {
         $status = "error";
         $message = $lang['ERROR_TRY_AGAIN'];
@@ -1653,12 +1671,13 @@ function paymentEdit()
     die();
 }
 
-function SaveSettings(){
+function SaveSettings()
+{
 
-    global $config,$lang,$link;
+    global $config, $lang, $link;
     $status = "";
     if (isset($_POST['logo_watermark'])) {
-        $valid_formats = array("jpg","jpeg","png"); // Valid image formats
+        $valid_formats = array("jpg", "jpeg", "png"); // Valid image formats
         if (isset($_FILES['banner']) && $_FILES['banner']['tmp_name'] != "") {
             $filename = stripslashes($_FILES['banner']['name']);
             $ext = getExtension($filename);
@@ -1675,25 +1694,22 @@ function SaveSettings(){
                 $banner_name = "bg" . '.' . $ext;
                 $newBgname = $uploaddir . $banner_name;
                 //Moving file to uploads folder
-                if(file_exists($newBgname)){
+                if (file_exists($newBgname)) {
                     unlink($newBgname);
                 }
                 if (move_uploaded_file($_FILES['banner']['tmp_name'], $newBgname)) {
 
-                    update_option("home_banner",$banner_name);
+                    update_option("home_banner", $banner_name);
                     $status = "success";
                     $message = ' Banner updated Successfully ';
-
                 } else {
                     $status = "error";
                     $message = 'Error in uploading Banner';
                 }
-            }
-            else {
+            } else {
                 $status = "error";
                 $message = 'Only allowed jpg, jpeg png';
             }
-
         }
 
         if (isset($_FILES['favicon']) && $_FILES['favicon']['tmp_name'] != "") {
@@ -1711,25 +1727,23 @@ function SaveSettings(){
                 $ext = strtolower($ext);
                 $image_name = "favicon" . '.' . $ext;
                 $newLogo = $uploaddir . $image_name;
-                if(file_exists($newLogo)){
+                if (file_exists($newLogo)) {
                     unlink($newLogo);
                 }
                 //Moving file to uploads folder
                 if (move_uploaded_file($_FILES['favicon']['tmp_name'], $newLogo)) {
 
-                    update_option("site_favicon",$image_name);
+                    update_option("site_favicon", $image_name);
                     $status = "success";
                     $message = ' Site Favicon icon updated Successfully ';
                 } else {
                     $status = "error";
                     $message = 'Error in uploading Favicon';
                 }
-            }
-            else {
+            } else {
                 $status = "error";
                 $message = 'Only allowed jpg, jpeg png';
             }
-
         }
 
         if (isset($_FILES['file']) && $_FILES['file']['tmp_name'] != "") {
@@ -1745,27 +1759,25 @@ function SaveSettings(){
 
                 $ext = getExtension($filename);
                 $ext = strtolower($ext);
-                $image_name = $config['tpl_name']."_logo" . '.' . $ext;
+                $image_name = $config['tpl_name'] . "_logo" . '.' . $ext;
                 $newLogo = $uploaddir . $image_name;
-                if(file_exists($newLogo)){
+                if (file_exists($newLogo)) {
                     unlink($newLogo);
                 }
                 //Moving file to uploads folder
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $newLogo)) {
 
-                    update_option("site_logo",$image_name);
+                    update_option("site_logo", $image_name);
                     $status = "success";
                     $message = ' Site Logo updated Successfully ';
                 } else {
                     $status = "error";
                     $message = 'Error in uploading Logo';
                 }
-            }
-            else {
+            } else {
                 $status = "error";
                 $message = 'Only allowed jpg, jpeg png';
             }
-
         }
 
         if (isset($_FILES['footer_logo']) && $_FILES['footer_logo']['tmp_name'] != "") {
@@ -1781,27 +1793,25 @@ function SaveSettings(){
 
                 $ext = getExtension($filename);
                 $ext = strtolower($ext);
-                $image_name = $config['tpl_name']."_footer_logo" . '.' . $ext;
+                $image_name = $config['tpl_name'] . "_footer_logo" . '.' . $ext;
                 $newLogo = $uploaddir . $image_name;
-                if(file_exists($newLogo)){
+                if (file_exists($newLogo)) {
                     unlink($newLogo);
                 }
                 //Moving file to uploads folder
                 if (move_uploaded_file($_FILES['footer_logo']['tmp_name'], $newLogo)) {
 
-                    update_option("site_logo_footer",$image_name);
+                    update_option("site_logo_footer", $image_name);
                     $status = "success";
                     $message = ' Site Logo updated Successfully ';
                 } else {
                     $status = "error";
                     $message = 'Error in uploading Logo';
                 }
-            }
-            else {
+            } else {
                 $status = "error";
                 $message = 'Only allowed jpg, jpeg png';
             }
-
         }
 
         if (isset($_FILES['adminlogo']) && $_FILES['adminlogo']['tmp_name'] != "") {
@@ -1819,106 +1829,106 @@ function SaveSettings(){
                 $ext = strtolower($ext);
                 $adminlogo_name = "adminlogo" . '.' . $ext;
                 $adminlogo = $uploaddir . $adminlogo_name;
-                if(file_exists($adminlogo)){
+                if (file_exists($adminlogo)) {
                     unlink($adminlogo);
                 }
                 //Moving file to uploads folder
                 if (move_uploaded_file($_FILES['adminlogo']['tmp_name'], $adminlogo)) {
-                    update_option("site_admin_logo",$adminlogo_name);
+                    update_option("site_admin_logo", $adminlogo_name);
                     $status = "success";
                     $message = ' Adminlogo Logo updated Successfully ';
                 } else {
                     $status = "error";
                     $message = 'Error in uploading adminlogo';
                 }
-            }
-            else {
+            } else {
                 $status = "error";
                 $message = 'Only allowed jpg, jpeg png';
             }
-
         }
 
-        if($status == ""){
+        if ($status == "") {
             $status = "success";
             $message = $lang['SAVED_SUCCESS'];
         }
     }
 
     if (isset($_POST['general_setting'])) {
-        update_option("site_url",$_POST['site_url']);
-        update_option("site_title",$_POST['site_title']);
-        update_option("admin_allow_online_payment",$_POST['admin_allow_online_payment']);
-        update_option("non_active_msg",$_POST['non_active_msg']);
+        update_option("site_url", $_POST['site_url']);
+        update_option("site_title", $_POST['site_title']);
+        update_option("admin_allow_online_payment", $_POST['admin_allow_online_payment']);
+        update_option("non_active_msg", $_POST['non_active_msg']);
         update_option("restaurant_text_editor", $_POST['restaurant_text_editor']);
-        update_option("default_user_plan",validate_input($_POST['default_user_plan']));
-        update_option("cron_exec_time",validate_input($_POST['cron_exec_time']));
-        update_option("userlangsel",$_POST['userlangsel']);
-        update_option("termcondition_link",validate_input($_POST['termcondition_link']));
-        update_option("privacy_link",validate_input($_POST['privacy_link']));
-        update_option("cookie_link",validate_input($_POST['cookie_link']));
-        update_option("cookie_consent",$_POST['cookie_consent']);
-        update_option("quickad_debug",$_POST['quickad_debug']);
+        update_option("default_user_plan", validate_input($_POST['default_user_plan']));
+        update_option("cron_exec_time", validate_input($_POST['cron_exec_time']));
+        update_option("userlangsel", $_POST['userlangsel']);
+        update_option("termcondition_link", validate_input($_POST['termcondition_link']));
+        update_option("privacy_link", validate_input($_POST['privacy_link']));
+        update_option("cookie_link", validate_input($_POST['cookie_link']));
+        update_option("cookie_consent", $_POST['cookie_consent']);
+        update_option("quickad_debug", $_POST['quickad_debug']);
         $status = "success";
         $message = 'General setting updated Successfully';
     }
 
     if (isset($_POST['quick_map'])) {
-        update_option("map_type",validate_input($_POST['map_type']));
-        update_option("openstreet_access_token",validate_input($_POST['openstreet_access_token']));
-        update_option("gmap_api_key",validate_input($_POST['gmap_api_key']));
-        update_option("map_color",validate_input($_POST['map_color']));
-        update_option("home_map_latitude",validate_input($_POST['home_map_latitude']));
-        update_option("home_map_longitude",validate_input($_POST['home_map_longitude']));
-        update_option("contact_latitude",validate_input($_POST['contact_latitude']));
-        update_option("contact_longitude",validate_input($_POST['contact_longitude']));
+        update_option("map_type", validate_input($_POST['map_type']));
+        update_option("openstreet_access_token", validate_input($_POST['openstreet_access_token']));
+        update_option("gmap_api_key", validate_input($_POST['gmap_api_key']));
+        update_option("map_color", validate_input($_POST['map_color']));
+        update_option("home_map_latitude", validate_input($_POST['home_map_latitude']));
+        update_option("home_map_longitude", validate_input($_POST['home_map_longitude']));
+        update_option("contact_latitude", validate_input($_POST['contact_latitude']));
+        update_option("contact_longitude", validate_input($_POST['contact_longitude']));
         $status = "success";
         $message = 'Setting updated Successfully';
     }
 
     if (isset($_POST['international'])) {
 
-        if(isset($_POST['currency']))
-        {
-            $info = ORM::for_table($config['db']['pre'].'currencies')->find_one($_POST['currency']);
+        if (isset($_POST['currency'])) {
+            $info = ORM::for_table($config['db']['pre'] . 'currencies')->find_one($_POST['currency']);
 
             $currency_sign = $info['html_entity'];
             $currency_code = $info['code'];
             $currency_pos = $info['in_left'];
         }
-        update_option("specific_country",$_POST['specific_country']);
-        update_option("lang",$_POST['lang']);
-        update_option("timezone",$_POST['timezone']);
-        update_option("currency_sign",$currency_sign);
-        update_option("currency_code",$currency_code);
-        update_option("currency_pos",$currency_pos);
+        update_option("specific_country", $_POST['specific_country']);
+        update_option("lang", $_POST['lang']);
+        update_option("timezone", $_POST['timezone']);
+        update_option("currency_sign", $currency_sign);
+        update_option("currency_code", $currency_code);
+        update_option("currency_pos", $currency_pos);
         $status = "success";
         $message = 'International setting updated Successfully';
     }
 
     if (isset($_POST['email_setting'])) {
 
-        update_option("admin_email",$_POST['admin_email']);
-        update_option("email_template",$_POST['email_template']);
-        update_option("email_engine",$_POST['email_engine']);
-        update_option("email_type",$_POST['email_type']);
+        update_option("admin_email", $_POST['admin_email']);
+        update_option("email_template", $_POST['email_template']);
+        update_option("email_engine", $_POST['email_engine']);
+        update_option("email_type", $_POST['email_type']);
 
-        update_option("smtp_host",$_POST['smtp_host']);
-        update_option("smtp_port",$_POST['smtp_port']);
-        update_option("smtp_username",$_POST['smtp_username']);
-        update_option("smtp_password",$_POST['smtp_password']);
-        update_option("smtp_secure",$_POST['smtp_secure']);
-        update_option("smtp_auth",$_POST['smtp_auth']);
+        update_option("smtp_host", $_POST['smtp_host']);
+        update_option("smtp_port", $_POST['smtp_port']);
+        update_option("smtp_username", $_POST['smtp_username']);
+        update_option("smtp_password", $_POST['smtp_password']);
+        update_option("smtp_secure", $_POST['smtp_secure']);
+        update_option("smtp_auth", $_POST['smtp_auth']);
 
-        update_option("aws_host",$_POST['aws_host']);
-        update_option("aws_access_key",$_POST['aws_access_key']);
-        update_option("aws_secret_key",$_POST['aws_secret_key']);
+        update_option("aws_host", $_POST['aws_host']);
+        update_option("aws_access_key", $_POST['aws_access_key']);
+        update_option("aws_secret_key", $_POST['aws_secret_key']);
 
-        update_option("mandrill_user",$_POST['mandrill_user']);
-        update_option("mandrill_key",$_POST['mandrill_key']);
+        update_option("mandrill_user", $_POST['mandrill_user']);
+        update_option("mandrill_key", $_POST['mandrill_key']);
 
-        update_option("sendgrid_user",$_POST['sendgrid_user']);
-        update_option("sendgrid_pass",$_POST['sendgrid_pass']);
+        update_option("gmail_user", $_POST['gmail_user']);
+        update_option("gmail_pass", $_POST['gmail_pass']);
+
+        update_option("sendgrid_user", $_POST['sendgrid_user']);
+        update_option("sendgrid_pass", $_POST['sendgrid_pass']);
 
 
 
@@ -1927,21 +1937,21 @@ function SaveSettings(){
     }
 
     if (isset($_POST['theme_setting'])) {
-        update_option("theme_color",validate_input($_POST['theme_color']));
-        update_option("meta_keywords",validate_input($_POST['meta_keywords']));
-        update_option("meta_description",validate_input($_POST['meta_description']));
-        update_option("contact_address",validate_input($_POST['contact_address']));
-        update_option("contact_phone",validate_input($_POST['contact_phone']));
-        update_option("contact_email",validate_input($_POST['contact_email']));
-        update_option("footer_text",validate_input($_POST['footer_text']));
-        update_option("copyright_text",validate_input($_POST['copyright_text']));
-        update_option("facebook_link",validate_input($_POST['facebook_link']));
-        update_option("twitter_link",validate_input($_POST['twitter_link']));
-        update_option("instagram_link",validate_input($_POST['instagram_link']));
-        update_option("linkedin_link",validate_input($_POST['linkedin_link']));
-        update_option("pinterest_link",validate_input($_POST['pinterest_link']));
-        update_option("youtube_link",validate_input($_POST['youtube_link']));
-        update_option("external_code",$_POST['external_code']);
+        update_option("theme_color", validate_input($_POST['theme_color']));
+        update_option("meta_keywords", validate_input($_POST['meta_keywords']));
+        update_option("meta_description", validate_input($_POST['meta_description']));
+        update_option("contact_address", validate_input($_POST['contact_address']));
+        update_option("contact_phone", validate_input($_POST['contact_phone']));
+        update_option("contact_email", validate_input($_POST['contact_email']));
+        update_option("footer_text", validate_input($_POST['footer_text']));
+        update_option("copyright_text", validate_input($_POST['copyright_text']));
+        update_option("facebook_link", validate_input($_POST['facebook_link']));
+        update_option("twitter_link", validate_input($_POST['twitter_link']));
+        update_option("instagram_link", validate_input($_POST['instagram_link']));
+        update_option("linkedin_link", validate_input($_POST['linkedin_link']));
+        update_option("pinterest_link", validate_input($_POST['pinterest_link']));
+        update_option("youtube_link", validate_input($_POST['youtube_link']));
+        update_option("external_code", $_POST['external_code']);
         $status = "success";
         $message = ' Theme Setting updated Successfully';
     }
@@ -1964,55 +1974,55 @@ function SaveSettings(){
     }
 
     if (isset($_POST['social_login_setting'])) {
-        update_option("facebook_app_id",validate_input($_POST['facebook_app_id']));
-        update_option("facebook_app_secret",validate_input($_POST['facebook_app_secret']));
-        update_option("google_app_id",validate_input($_POST['google_app_id']));
-        update_option("google_app_secret",validate_input($_POST['google_app_secret']));
+        update_option("facebook_app_id", validate_input($_POST['facebook_app_id']));
+        update_option("facebook_app_secret", validate_input($_POST['facebook_app_secret']));
+        update_option("google_app_id", validate_input($_POST['google_app_id']));
+        update_option("google_app_secret", validate_input($_POST['google_app_secret']));
         $status = "success";
         $message = ' Social Login setting updated Successfully';
     }
 
     if (isset($_POST['recaptcha_setting'])) {
 
-        update_option("recaptcha_mode",validate_input($_POST['recaptcha_mode']));
-        update_option("recaptcha_public_key",validate_input($_POST['recaptcha_public_key']));
-        update_option("recaptcha_private_key",validate_input($_POST['recaptcha_private_key']));
+        update_option("recaptcha_mode", validate_input($_POST['recaptcha_mode']));
+        update_option("recaptcha_public_key", validate_input($_POST['recaptcha_public_key']));
+        update_option("recaptcha_private_key", validate_input($_POST['recaptcha_private_key']));
         $status = "success";
         $message = 'reCAPTCHA setting updated Successfully';
     }
 
     if (isset($_POST['blog_setting'])) {
 
-        update_option("blog_enable",validate_input($_POST['blog_enable']));
-        update_option("blog_banner",validate_input($_POST['blog_banner']));
-        update_option("show_blog_home",validate_input($_POST['show_blog_home']));
-        update_option("blog_comment_enable",validate_input($_POST['blog_comment_enable']));
-        update_option("blog_comment_approval",validate_input($_POST['blog_comment_approval']));
-        update_option("blog_comment_user",validate_input($_POST['blog_comment_user']));
+        update_option("blog_enable", validate_input($_POST['blog_enable']));
+        update_option("blog_banner", validate_input($_POST['blog_banner']));
+        update_option("show_blog_home", validate_input($_POST['show_blog_home']));
+        update_option("blog_comment_enable", validate_input($_POST['blog_comment_enable']));
+        update_option("blog_comment_approval", validate_input($_POST['blog_comment_approval']));
+        update_option("blog_comment_user", validate_input($_POST['blog_comment_user']));
         $status = "success";
         $message = 'Blog setting updated Successfully';
     }
 
     if (isset($_POST['testimonials_setting'])) {
 
-        update_option("testimonials_enable",validate_input($_POST['testimonials_enable']));
-        update_option("show_testimonials_blog",validate_input($_POST['show_testimonials_blog']));
-        update_option("show_testimonials_home",validate_input($_POST['show_testimonials_home']));
+        update_option("testimonials_enable", validate_input($_POST['testimonials_enable']));
+        update_option("show_testimonials_blog", validate_input($_POST['show_testimonials_blog']));
+        update_option("show_testimonials_home", validate_input($_POST['show_testimonials_home']));
         $status = "success";
         $message = 'Testimonials setting updated Successfully';
     }
 
     if (isset($_POST['whatsapp_ordering'])) {
 
-        update_option("quickorder_enable",validate_input($_POST['quickorder_enable']));
-        update_option("quickorder_homepage_enable",validate_input($_POST['quickorder_homepage_enable']));
-        update_option("try_demo_link",validate_input($_POST['try_demo_link']));
-        update_option("quickorder_whatsapp_message",validate_input($_POST['quickorder_whatsapp_message']));
+        update_option("quickorder_enable", validate_input($_POST['quickorder_enable']));
+        update_option("quickorder_homepage_enable", validate_input($_POST['quickorder_homepage_enable']));
+        update_option("try_demo_link", validate_input($_POST['try_demo_link']));
+        update_option("quickorder_whatsapp_message", validate_input($_POST['quickorder_whatsapp_message']));
 
         $status = "success";
         $message = 'QuickOrder setting updated Successfully';
 
-        if(!empty($_POST['quickorder_purchase_key'])) {
+        if (!empty($_POST['quickorder_purchase_key'])) {
             $code = $_POST['quickorder_purchase_key'];
             $installing_version = 'pro';
 
@@ -2024,7 +2034,7 @@ function SaveSettings(){
                 $status = "success";
                 $message = 'Purchase code verified successfully';
             } else {
-                update_option("quickorder_enable",0);
+                update_option("quickorder_enable", 0);
                 $status = "error";
                 $message = $output['error'];
             }
@@ -2035,34 +2045,34 @@ function SaveSettings(){
 
         // Set API Key
         $code = $_POST['purchase_key'];
-        $buyer_email = (isset($_POST['buyer_email']))? validate_input($_POST['buyer_email']) : "";
+        $buyer_email = (isset($_POST['buyer_email'])) ? validate_input($_POST['buyer_email']) : "";
         $installing_version = 'pro';
 
         $data = file_get_contents('./arrocy.php', true);
         $user_data = file_get_contents('../php/arrocy.php', true);
-		$output['success'] = true;
+        $output['success'] = true;
         $output['error'] = "";
         $output['purchase_type'] = "regular";
         $output['data'] = $data;
-		$output['user_data'] = $user_data;
+        $output['user_data'] = $user_data;
 
         if ($output['success']) {
-            if(isset($config['quickad_secret_file']) && $config['quickad_secret_file'] != ""){
+            if (isset($config['quickad_secret_file']) && $config['quickad_secret_file'] != "") {
                 $fileName = $config['quickad_secret_file'];
-            }else{
+            } else {
                 $fileName = get_random_string();
             }
 
-            if(isset($config['quickad_user_secret_file']) && $config['quickad_user_secret_file'] != ""){
+            if (isset($config['quickad_user_secret_file']) && $config['quickad_user_secret_file'] != "") {
                 $userFileName = $config['quickad_user_secret_file'];
-            }else{
+            } else {
                 $userFileName = get_random_string();
             }
-            file_put_contents( $fileName . '.php', $output['data']);
-            file_put_contents( '../php/'.$userFileName . '.php', $output['user_data']);
+            file_put_contents($fileName . '.php', $output['data']);
+            file_put_contents('../php/' . $userFileName . '.php', $output['user_data']);
             $success = true;
-            update_option("quickad_secret_file",$fileName);
-            update_option("quickad_user_secret_file",$userFileName);
+            update_option("quickad_secret_file", $fileName);
+            update_option("quickad_user_secret_file", $userFileName);
 
             update_option("purchase_key", $_POST['purchase_key']);
             update_option("purchase_type", $output['purchase_type']);
@@ -2072,48 +2082,48 @@ function SaveSettings(){
             $status = "error";
             $message = $output['error'];
         }
-
     }
 
     echo $json = '{"status" : "' . $status . '","message" : "' . $message . '"}';
     die();
 }
 
-function saveEmailTemplate(){
+function saveEmailTemplate()
+{
 
-    global $config,$lang,$link;
+    global $config, $lang, $link;
 
     if (isset($_POST['email_setting'])) {
         $email_template = $_POST['email_template'];
-        update_option("email_template",$email_template);
-        if($email_template == 0){
-            update_option("email_message_signup_details",stripslashes($_POST['email_message_editor_signup_details']));
-            update_option("email_message_signup_confirm",stripslashes($_POST['email_message_editor_signup_confirm']));
-            update_option("email_message_forgot_pass",stripslashes($_POST['email_message_editor_forgot_pass']));
-            update_option("email_message_contact",stripslashes($_POST['email_message_editor_contact']));
-            update_option("email_message_feedback",stripslashes($_POST['email_message_editor_feedback']));
-            update_option("email_message_report",stripslashes($_POST['email_message_editor_report']));
-            update_option("email_message_new_order",stripslashes($_POST['email_message_editor_new_order']));
-        }else{
-            update_option("email_message_signup_details",stripslashes($_POST['email_message_textarea_signup_details']));
-            update_option("email_message_signup_confirm",stripslashes($_POST['email_message_textarea_signup_confirm']));
-            update_option("email_message_forgot_pass",stripslashes($_POST['email_message_textarea_forgot_pass']));
-            update_option("email_message_contact",stripslashes($_POST['email_message_textarea_contact']));
-            update_option("email_message_feedback",stripslashes($_POST['email_message_textarea_feedback']));
-            update_option("email_message_report",stripslashes($_POST['email_message_textarea_report']));
-            update_option("email_message_new_order",stripslashes($_POST['email_message_textarea_new_order']));
+        update_option("email_template", $email_template);
+        if ($email_template == 0) {
+            update_option("email_message_signup_details", stripslashes($_POST['email_message_editor_signup_details']));
+            update_option("email_message_signup_confirm", stripslashes($_POST['email_message_editor_signup_confirm']));
+            update_option("email_message_forgot_pass", stripslashes($_POST['email_message_editor_forgot_pass']));
+            update_option("email_message_contact", stripslashes($_POST['email_message_editor_contact']));
+            update_option("email_message_feedback", stripslashes($_POST['email_message_editor_feedback']));
+            update_option("email_message_report", stripslashes($_POST['email_message_editor_report']));
+            update_option("email_message_new_order", stripslashes($_POST['email_message_editor_new_order']));
+        } else {
+            update_option("email_message_signup_details", stripslashes($_POST['email_message_textarea_signup_details']));
+            update_option("email_message_signup_confirm", stripslashes($_POST['email_message_textarea_signup_confirm']));
+            update_option("email_message_forgot_pass", stripslashes($_POST['email_message_textarea_forgot_pass']));
+            update_option("email_message_contact", stripslashes($_POST['email_message_textarea_contact']));
+            update_option("email_message_feedback", stripslashes($_POST['email_message_textarea_feedback']));
+            update_option("email_message_report", stripslashes($_POST['email_message_textarea_report']));
+            update_option("email_message_new_order", stripslashes($_POST['email_message_textarea_new_order']));
         }
-        update_option("email_sub_signup_details",stripslashes(validate_input($_POST['email_sub_signup_details'])));
-        update_option("email_sub_signup_confirm",stripslashes(validate_input($_POST['email_sub_signup_confirm'])));
-        update_option("email_sub_forgot_pass",stripslashes(validate_input($_POST['email_sub_forgot_pass'])));
-        update_option("email_sub_contact",stripslashes(validate_input($_POST['email_sub_contact'])));
-        update_option("email_sub_feedback",stripslashes(validate_input($_POST['email_sub_feedback'])));
-        update_option("email_sub_report",stripslashes(validate_input($_POST['email_sub_report'])));
-        update_option("email_sub_new_order",stripslashes(validate_input($_POST['email_sub_new_order'])));
+        update_option("email_sub_signup_details", stripslashes(validate_input($_POST['email_sub_signup_details'])));
+        update_option("email_sub_signup_confirm", stripslashes(validate_input($_POST['email_sub_signup_confirm'])));
+        update_option("email_sub_forgot_pass", stripslashes(validate_input($_POST['email_sub_forgot_pass'])));
+        update_option("email_sub_contact", stripslashes(validate_input($_POST['email_sub_contact'])));
+        update_option("email_sub_feedback", stripslashes(validate_input($_POST['email_sub_feedback'])));
+        update_option("email_sub_report", stripslashes(validate_input($_POST['email_sub_report'])));
+        update_option("email_sub_new_order", stripslashes(validate_input($_POST['email_sub_new_order'])));
 
         $status = "success";
         $message = 'Email setting updated Successfully';
-    }else{
+    } else {
         $status = "Error";
         $message = 'Problem in save setting.';
     }
@@ -2122,9 +2132,10 @@ function saveEmailTemplate(){
     die();
 }
 
-function testEmailTemplate(){
+function testEmailTemplate()
+{
 
-    global $config,$lang,$link;
+    global $config, $lang, $link;
 
     if (isset($_POST['test-email-notification'])) {
         $test_to_email =  $_POST['test_to_email'];
@@ -2153,186 +2164,186 @@ function testEmailTemplate(){
             $page->SetParameter('ORDER_TYPE', 'Delivery');
             $page->SetParameter('ORDER', $order);
             $page->SetParameter('MESSAGE', 'Make it spicy.');
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['signup-details'])) {
 
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_signup_details'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_signup_details'];
-            $page->SetParameter ('USERNAME', "demo");
-            $page->SetParameter ('PASSWORD', "demo");
-            $page->SetParameter ('USER_ID', "1");
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('USERNAME', "demo");
+            $page->SetParameter('PASSWORD', "demo");
+            $page->SetParameter('USER_ID', "1");
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['create-account'])) {
 
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_signup_confirm'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
-            $confirmation_link = $link['SIGNUP']."?confirm=123456&user=1";
+            $confirmation_link = $link['SIGNUP'] . "?confirm=123456&user=1";
             $page = new HtmlTemplate();
             $page->html = $config['email_message_signup_confirm'];
-            $page->SetParameter ('CONFIRMATION_LINK', $confirmation_link);
-            $page->SetParameter ('USERNAME', "demo");
-            $page->SetParameter ('USER_ID', "1");
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('CONFIRMATION_LINK', $confirmation_link);
+            $page->SetParameter('USERNAME', "demo");
+            $page->SetParameter('USER_ID', "1");
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['forgot-pass'])) {
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_forgot_pass'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
-            $forget_password_link = $config['site_url']."login?forgot=sd1213f1x1&r=21d1d2d12&e=12&t=1213231";
+            $forget_password_link = $config['site_url'] . "login?forgot=sd1213f1x1&r=21d1d2d12&e=12&t=1213231";
             $page = new HtmlTemplate();
             $page->html = $config['email_message_forgot_pass'];
-            $page->SetParameter ('FORGET_PASSWORD_LINK', $forget_password_link);
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('USER_FULLNAME', $test_to_name);
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('FORGET_PASSWORD_LINK', $forget_password_link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('USER_FULLNAME', $test_to_name);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['contact_us'])) {
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_contact'];
-            $page->SetParameter ('CONTACT_SUBJECT', "Contact Email");
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('CONTACT_SUBJECT', "Contact Email");
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_contact'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $page->SetParameter ('CONTACT_SUBJECT', "Contact Email");
-            $page->SetParameter ('MESSAGE', "Test Message");
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $page->SetParameter('CONTACT_SUBJECT', "Contact Email");
+            $page->SetParameter('MESSAGE', "Test Message");
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['feedback'])) {
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_feedback'];
-            $page->SetParameter ('FEEDBACK_SUBJECT', "Feedback Email");
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('FEEDBACK_SUBJECT', "Feedback Email");
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_feedback'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $page->SetParameter ('PHONE', "1234567890");
-            $page->SetParameter ('FEEDBACK_SUBJECT', "Feedback Email");
-            $page->SetParameter ('MESSAGE', "Test Message");
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $page->SetParameter('PHONE', "1234567890");
+            $page->SetParameter('FEEDBACK_SUBJECT', "Feedback Email");
+            $page->SetParameter('MESSAGE', "Test Message");
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['report'])) {
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_report'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $page->SetParameter ('USERNAME', $test_to_name);
-            $page->SetParameter ('VIOLATION', $lang['ADVWEBSITE']);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $page->SetParameter('USERNAME', $test_to_name);
+            $page->SetParameter('VIOLATION', $lang['ADVWEBSITE']);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_report'];
-            $page->SetParameter ('EMAIL', $test_to_email);
-            $page->SetParameter ('NAME', $test_to_name);
-            $page->SetParameter ('USERNAME', $test_to_name);
-            $page->SetParameter ('USERNAME2', "Violator Username");
-            $page->SetParameter ('VIOLATION', $lang['ADVWEBSITE']);
-            $page->SetParameter ('URL', $config['site_url']."ad/1");
-            $page->SetParameter ('DETAILS', "Violator Message details here");
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('EMAIL', $test_to_email);
+            $page->SetParameter('NAME', $test_to_name);
+            $page->SetParameter('USERNAME', $test_to_name);
+            $page->SetParameter('USERNAME2', "Violator Username");
+            $page->SetParameter('VIOLATION', $lang['ADVWEBSITE']);
+            $page->SetParameter('URL', $config['site_url'] . "ad/1");
+            $page->SetParameter('DETAILS', "Violator Message details here");
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['contact_to_seller'])) {
             $item_title = "Advertise Title";
-            $ad_link = $config['site_url']."ad/1";
+            $ad_link = $config['site_url'] . "ad/1";
 
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_contact_seller'];
-            $page->SetParameter ('ADTITLE', $item_title);
-            $page->SetParameter ('ADLINK', $ad_link);
-            $page->SetParameter ('SELLER_NAME', $test_to_name);
-            $page->SetParameter ('SELLER_EMAIL', $test_to_email);
+            $page->SetParameter('ADTITLE', $item_title);
+            $page->SetParameter('ADLINK', $ad_link);
+            $page->SetParameter('SELLER_NAME', $test_to_name);
+            $page->SetParameter('SELLER_EMAIL', $test_to_email);
             $page->SetParameter('SENDER_NAME', "Sender Name");
             $page->SetParameter('SENDER_EMAIL', "sender@gmail.com");
             $page->SetParameter('SENDER_PHONE', "1234567890");
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_contact_seller'];;
-            $page->SetParameter ('ADTITLE', $item_title);
-            $page->SetParameter ('ADLINK', $ad_link);
-            $page->SetParameter ('SELLER_NAME', $test_to_name);
-            $page->SetParameter ('SELLER_EMAIL', $test_to_email);
+            $page->SetParameter('ADTITLE', $item_title);
+            $page->SetParameter('ADLINK', $ad_link);
+            $page->SetParameter('SELLER_NAME', $test_to_name);
+            $page->SetParameter('SELLER_EMAIL', $test_to_email);
             $page->SetParameter('SENDER_NAME', "Sender Name");
             $page->SetParameter('SENDER_EMAIL', "sender@gmail.com");
             $page->SetParameter('SENDER_PHONE', "1234567890");
             $page->SetParameter('MESSAGE', "Test Message : I want to inquiry about your classified.");
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         if (isset($_POST['ad_newsletter'])) {
             $item_title = "Advertise Title";
-            $ad_link = $config['site_url']."ad/1";
+            $ad_link = $config['site_url'] . "ad/1";
             $ad_id = 1;
 
             $page = new HtmlTemplate();
             $page->html = $config['email_sub_post_notification'];
-            $page->SetParameter ('ADTITLE', $item_title);
-            $page->SetParameter ('ADLINK', $ad_link);
-            $page->SetParameter ('ADID', $ad_id);
-            $email_subject = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('ADTITLE', $item_title);
+            $page->SetParameter('ADLINK', $ad_link);
+            $page->SetParameter('ADID', $ad_id);
+            $email_subject = $page->CreatePageReturn($lang, $config, $link);
 
             $page = new HtmlTemplate();
             $page->html = $config['email_message_post_notification'];;
-            $page->SetParameter ('ADTITLE', $item_title);
-            $page->SetParameter ('ADLINK', $ad_link);
-            $page->SetParameter ('ADID', $ad_id);
-            $email_body = $page->CreatePageReturn($lang,$config,$link);
+            $page->SetParameter('ADTITLE', $item_title);
+            $page->SetParameter('ADLINK', $ad_link);
+            $page->SetParameter('ADID', $ad_id);
+            $email_body = $page->CreatePageReturn($lang, $config, $link);
 
-            email($test_to_email,$test_to_name,$email_subject,$email_body);
+            email($test_to_email, $test_to_name, $email_subject, $email_body);
         }
 
         $status = "success";
         $message = 'Email Sent Successfully';
-    }else{
+    } else {
         $status = "Error";
         $message = 'Problem in sent e-mail.';
     }

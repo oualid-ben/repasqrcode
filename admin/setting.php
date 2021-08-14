@@ -65,29 +65,45 @@ require_once('includes.php');
                                                             <div class="form-group">
                                                                 <label for="admin_allow_online_payment">Allow Online Payment For Restaurants</label>
                                                                 <select name="admin_allow_online_payment" id="admin_allow_online_payment" class="form-control">
-                                                                    <option value="1" <?php if(get_option("admin_allow_online_payment") == '1'){ echo "selected"; } ?>>Yes</option>
-                                                                    <option value="0" <?php if(get_option("admin_allow_online_payment") == '0'){ echo "selected"; } ?>>No</option>
+                                                                    <option value="1" <?php if (get_option("admin_allow_online_payment") == '1') {
+                                                                                            echo "selected";
+                                                                                        } ?>>Yes</option>
+                                                                    <option value="0" <?php if (get_option("admin_allow_online_payment") == '0') {
+                                                                                            echo "selected";
+                                                                                        } ?>>No</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="non_active_msg">Show/hide Verify Email Message to Non-active Users</label>
                                                                 <select name="non_active_msg" id="non_active_msg" class="form-control">
-                                                                    <option value="1" <?php if(get_option("non_active_msg") == '1'){ echo "selected"; } ?>>Show</option>
-                                                                    <option value="0" <?php if(get_option("non_active_msg") == '0'){ echo "selected"; } ?>>Hide</option>
+                                                                    <option value="1" <?php if (get_option("non_active_msg") == '1') {
+                                                                                            echo "selected";
+                                                                                        } ?>>Show</option>
+                                                                    <option value="0" <?php if (get_option("non_active_msg") == '0') {
+                                                                                            echo "selected";
+                                                                                        } ?>>Hide</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="restaurant_text_editor">Enable/Disable Text Editor For Restaurant Description</label>
                                                                 <select name="restaurant_text_editor" id="restaurant_text_editor" class="form-control">
-                                                                    <option value="1" <?php if(get_option("restaurant_text_editor") == '1'){ echo "selected"; } ?>>Enable</option>
-                                                                    <option value="0" <?php if(get_option("restaurant_text_editor") == '0'){ echo "selected"; } ?>>Disable</option>
+                                                                    <option value="1" <?php if (get_option("restaurant_text_editor") == '1') {
+                                                                                            echo "selected";
+                                                                                        } ?>>Enable</option>
+                                                                    <option value="0" <?php if (get_option("restaurant_text_editor") == '0') {
+                                                                                            echo "selected";
+                                                                                        } ?>>Disable</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="default_user_plan">Default Membership Plan for New Users</label>
                                                                 <select name="default_user_plan" id="default_user_plan" class="form-control">
-                                                                    <option value="free" <?php if(get_option("default_user_plan") == 'free'){ echo "selected"; } ?>>Free</option>
-                                                                    <option value="trial" <?php if(get_option("default_user_plan") == 'trial'){ echo "selected"; } ?>>Trial</option>
+                                                                    <option value="free" <?php if (get_option("default_user_plan") == 'free') {
+                                                                                                echo "selected";
+                                                                                            } ?>>Free</option>
+                                                                    <option value="trial" <?php if (get_option("default_user_plan") == 'trial') {
+                                                                                                echo "selected";
+                                                                                            } ?>>Trial</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -100,8 +116,12 @@ require_once('includes.php');
                                                             <div class="form-group">
                                                                 <label for="userlangsel">Allow User Language Selection</label>
                                                                 <select name="userlangsel" class="form-control" id="userlangsel">
-                                                                    <option value="1" <?php if(get_option("userlangsel") == 1){ echo "selected"; } ?>>Yes</option>
-                                                                    <option value="0" <?php if(get_option("userlangsel") == 0){ echo "selected"; } ?>>No</option>
+                                                                    <option value="1" <?php if (get_option("userlangsel") == 1) {
+                                                                                            echo "selected";
+                                                                                        } ?>>Yes</option>
+                                                                    <option value="0" <?php if (get_option("userlangsel") == 0) {
+                                                                                            echo "selected";
+                                                                                        } ?>>No</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -125,15 +145,25 @@ require_once('includes.php');
                                                             <div class="form-group">
                                                                 <label for="cookie_consent">Show/hide Cookie Consent Box</label>
                                                                 <select name="cookie_consent" class="form-control" id="userthemesel">
-                                                                    <option value="1" <?php if(get_option("cookie_consent") == 1){ echo "selected"; } ?>>Show</option>
-                                                                    <option value="0" <?php if(get_option("cookie_consent") == 0){ echo "selected"; } ?>>Hide</option>
+                                                                    <option value="1" <?php if (get_option("cookie_consent") == 1) {
+                                                                                            echo "selected";
+                                                                                        } ?>>Show</option>
+                                                                    <option value="0" <?php if (get_option("cookie_consent") == 0) {
+                                                                                            echo "selected";
+                                                                                        } ?>>Hide</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="form-group <?php if(get_option("quickad_debug") == 0){ echo "hidden"; } ?> ">
+                                                            <div class="form-group <?php if (get_option("quickad_debug") == 0) {
+                                                                                        echo "hidden";
+                                                                                    } ?> ">
                                                                 <label for="quickad_debug">Enable Developement Mode</label>
                                                                 <select name="quickad_debug" id="quickad_debug" class="form-control">
-                                                                    <option value="1" <?php if(get_option("quickad_debug") == 1){ echo "selected"; } ?>>Yes</option>
-                                                                    <option value="0" <?php if(get_option("quickad_debug") == 0){ echo "selected"; } ?>>No</option>
+                                                                    <option value="1" <?php if (get_option("quickad_debug") == 1) {
+                                                                                            echo "selected";
+                                                                                        } ?>>Yes</option>
+                                                                    <option value="0" <?php if (get_option("quickad_debug") == 0) {
+                                                                                            echo "selected";
+                                                                                        } ?>>No</option>
                                                                 </select>
                                                             </div>
 
@@ -150,7 +180,7 @@ require_once('includes.php');
                                                             <div class="form-group">
 
                                                                 <label class="control-label">Favicon Icon<code>*</code></label>
-                                                                <div class="screenshot"><img class="redux-option-image" id="favicon_uploader" src="../storage/logo/<?php echo $config['site_favicon']?>" alt="" target="_blank" rel="external"  style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
+                                                                <div class="screenshot"><img class="redux-option-image" id="favicon_uploader" src="../storage/logo/<?php echo $config['site_favicon'] ?>" alt="" target="_blank" rel="external" style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
                                                                 <input class="form-control input-sm" type="file" name="favicon" onchange="readURL(this,'favicon_uploader')">
                                                                 <span class="help-block">Ideal Size 16x16 PX</span>
                                                             </div>
@@ -158,14 +188,14 @@ require_once('includes.php');
                                                             <!-- Site Logo upload-->
                                                             <div class="form-group">
                                                                 <label class="control-label">Logo<code>*</code></label>
-                                                                <div class="screenshot"><img class="redux-option-image" id="image_logo_uploader" src="../storage/logo/<?php echo $config['site_logo']?>" alt="" target="_blank" rel="external"  style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
+                                                                <div class="screenshot"><img class="redux-option-image" id="image_logo_uploader" src="../storage/logo/<?php echo $config['site_logo'] ?>" alt="" target="_blank" rel="external" style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
                                                                 <input class="form-control input-sm" type="file" name="file" onchange="readURL(this,'image_logo_uploader')">
                                                                 <span class="help-block">Ideal Size 170x60 PX</span>
                                                             </div>
                                                             <!-- Site Logo upload-->
                                                             <div class="form-group">
                                                                 <label class="control-label">Footer Logo<code>*</code></label>
-                                                                <div class="screenshot"><img class="redux-option-image" id="image_flogo_uploader" src="../storage/logo/<?php echo $config['site_logo_footer']?>" alt="" target="_blank" rel="external"  style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
+                                                                <div class="screenshot"><img class="redux-option-image" id="image_flogo_uploader" src="../storage/logo/<?php echo $config['site_logo_footer'] ?>" alt="" target="_blank" rel="external" style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
                                                                 <input class="form-control input-sm" type="file" name="footer_logo" onchange="readURL(this,'image_flogo_uploader')">
                                                                 <span class="help-block">Display in the footer</span>
                                                             </div>
@@ -173,7 +203,7 @@ require_once('includes.php');
                                                             <!-- Admin Logo upload-->
                                                             <div class="form-group">
                                                                 <label class="control-label">Admin Logo</label>
-                                                                <div class="screenshot"><img class="redux-option-image" id="adminlogo" src="../storage/logo/<?php echo $config['site_admin_logo']?>" alt="" target="_blank" rel="external"  style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
+                                                                <div class="screenshot"><img class="redux-option-image" id="adminlogo" src="../storage/logo/<?php echo $config['site_admin_logo'] ?>" alt="" target="_blank" rel="external" style="border: 2px solid #eee;background-color: #000;max-width: 100%"></div>
                                                                 <input class="form-control input-sm" type="file" name="adminlogo" onchange="readURL(this,'adminlogo')">
                                                                 <span class="help-block">Ideal Size 235x62 PX</span>
                                                             </div>
@@ -191,8 +221,12 @@ require_once('includes.php');
                                                             <div class="form-group">
                                                                 <label for="map_type">Map Type (Google/Openstreet)</label>
                                                                 <select name="map_type" id="map_type" class="form-control">
-                                                                    <option value="google" <?php if(get_option('map_type') == 'google'){ echo "selected"; } ?>>Google Map</option>
-                                                                    <option value="openstreet" <?php if(get_option('map_type') == 'openstreet'){ echo "selected"; } ?>>Openstreet Map</option>
+                                                                    <option value="google" <?php if (get_option('map_type') == 'google') {
+                                                                                                echo "selected";
+                                                                                            } ?>>Google Map</option>
+                                                                    <option value="openstreet" <?php if (get_option('map_type') == 'openstreet') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>Openstreet Map</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -247,12 +281,12 @@ require_once('includes.php');
                                                                 <label for="specific_country">Default Country</label>
                                                                 <p class="help-block">When user first time visit your website. Then the site run for that choosen default country.</p>
                                                                 <div>
-                                                                    <select  class="js-select2 form-control" name="specific_country" id="specific_country" style="width: 100%;">
+                                                                    <select class="js-select2 form-control" name="specific_country" id="specific_country" style="width: 100%;">
                                                                         <?php
 
                                                                         $country = get_country_list(get_option("specific_country"));
-                                                                        foreach ($country as $value){
-                                                                            echo '<option value="'.$value['code'].'" '.$value['selected'].'>'.$value['asciiname'].'</option>';
+                                                                        foreach ($country as $value) {
+                                                                            echo '<option value="' . $value['code'] . '" ' . $value['selected'] . '>' . $value['asciiname'] . '</option>';
                                                                         }
                                                                         ?>
                                                                     </select>
@@ -262,7 +296,7 @@ require_once('includes.php');
                                                                 <label for="timezone">Timezone</label>
                                                                 <p class="help-block">Set your website timezone.</p>
                                                                 <div>
-                                                                    <select name="timezone" id="timezone" class="js-select2 form-control"  style="width: 100%;">
+                                                                    <select name="timezone" id="timezone" class="js-select2 form-control" style="width: 100%;">
                                                                         <?php
                                                                         $timezone = get_timezone_list(get_option("timezone"));
 
@@ -271,7 +305,7 @@ require_once('includes.php');
                                                                             $country_code = $value['country_code'];
                                                                             $time_zone_id = $value['time_zone_id'];
                                                                             $selected = $value['selected'];
-                                                                            echo '<option value="'.$time_zone_id.'" '.$selected.' data-tokens="'.$time_zone_id.'">'.$time_zone_id.'</option>';
+                                                                            echo '<option value="' . $time_zone_id . '" ' . $selected . ' data-tokens="' . $time_zone_id . '">' . $time_zone_id . '</option>';
                                                                         }
 
                                                                         ?>
@@ -283,19 +317,18 @@ require_once('includes.php');
                                                                 <label for="currency">Currency</label>
                                                                 <p class="help-block">This is default currecny which used for payment method.</p>
                                                                 <div>
-                                                                    <select name="currency" id="currency"  class="js-select2 form-control" style="width: 100%;">
+                                                                    <select name="currency" id="currency" class="js-select2 form-control" style="width: 100%;">
                                                                         <?php
                                                                         $currency = get_currency_list(get_option("currency_code"));
 
-                                                                        foreach ($currency as $value)
-                                                                        {
+                                                                        foreach ($currency as $value) {
                                                                             $id          = $value['id'];
                                                                             $code        = $value['code'];
                                                                             $name       = $value['name'];
                                                                             $html_code   = $value['html_entity'];
                                                                             $selected =  $value['selected'];
 
-                                                                            echo '<option value="'.$id.'" '.$selected.' data-tokens="'.$name.'">'.$name.' ('.$html_code.')</option>';
+                                                                            echo '<option value="' . $id . '" ' . $selected . ' data-tokens="' . $name . '">' . $name . ' (' . $html_code . ')</option>';
                                                                         }
 
                                                                         ?>
@@ -310,14 +343,11 @@ require_once('includes.php');
                                                                     <?php
                                                                     $langs = array();
 
-                                                                    if ($handle = opendir('../includes/lang/'))
-                                                                    {
-                                                                        while (false !== ($file = readdir($handle)))
-                                                                        {
-                                                                            if ($file != "." && $file != "..")
-                                                                            {
-                                                                                $lang2 = str_replace('.php','',$file);
-                                                                                $lang2 = str_replace('lang_','',$lang2);
+                                                                    if ($handle = opendir('../includes/lang/')) {
+                                                                        while (false !== ($file = readdir($handle))) {
+                                                                            if ($file != "." && $file != "..") {
+                                                                                $lang2 = str_replace('.php', '', $file);
+                                                                                $lang2 = str_replace('lang_', '', $lang2);
 
                                                                                 $langs[] = $lang2;
                                                                             }
@@ -327,15 +357,11 @@ require_once('includes.php');
 
                                                                     sort($langs);
 
-                                                                    foreach ($langs as $key => $lang2)
-                                                                    {
-                                                                        if(get_option("lang") == $lang2)
-                                                                        {
-                                                                            echo '<option value="'.$lang2.'" selected>'.ucwords($lang2).'</option>';
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            echo '<option value="'.$lang2.'">'.ucwords($lang2).'</option>';
+                                                                    foreach ($langs as $key => $lang2) {
+                                                                        if (get_option("lang") == $lang2) {
+                                                                            echo '<option value="' . $lang2 . '" selected>' . ucwords($lang2) . '</option>';
+                                                                        } else {
+                                                                            echo '<option value="' . $lang2 . '">' . ucwords($lang2) . '</option>';
                                                                         }
                                                                     }
                                                                     ?>
@@ -356,7 +382,7 @@ require_once('includes.php');
                                                                 <label for="admin_email">Admin Email</label>
                                                                 <p class="help-block">This is the email address that the contact and report emails will be sent to, aswell as being the from address in signup and notification emails.</p>
                                                                 <div>
-                                                                    <input name="admin_email" class="form-control" type="Text" id="admin_email" value="<?php echo get_option("admin_email");?>">
+                                                                    <input name="admin_email" class="form-control" type="Text" id="admin_email" value="<?php echo get_option("admin_email"); ?>">
                                                                 </div>
                                                             </div>
 
@@ -365,8 +391,12 @@ require_once('includes.php');
                                                                 <p class="help-block">Text-plain or HTML content chooser.</p>
                                                                 <div>
                                                                     <select name="email_template" id="email_template" class="form-control">
-                                                                        <option <?php if(get_option("email_template") == '0'){ echo "selected"; } ?> value="0">HTML</option>
-                                                                        <option <?php if(get_option("email_template") == '1'){ echo "selected"; } ?> value="1">Text</option>
+                                                                        <option <?php if (get_option("email_template") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">HTML</option>
+                                                                        <option <?php if (get_option("email_template") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Text</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -376,8 +406,12 @@ require_once('includes.php');
                                                                 <p class="help-block">E-Mail sender engine. Ready-to-use e-mail sender classes. You can use different mail sender classes.</p>
                                                                 <div>
                                                                     <select name="email_engine" id="email_engine" class="form-control">
-                                                                        <option <?php if(get_option("email_engine") == 'phpmailer'){ echo "selected"; } ?> value="phpmailer">PHPMailer</option>
-                                                                        <option <?php if(get_option("email_engine") == 'swiftmailer'){ echo "selected"; } ?> value="swiftmailer">Swift Mailer</option>
+                                                                        <option <?php if (get_option("email_engine") == 'phpmailer') {
+                                                                                    echo "selected";
+                                                                                } ?> value="phpmailer">PHPMailer</option>
+                                                                        <option <?php if (get_option("email_engine") == 'swiftmailer') {
+                                                                                    echo "selected";
+                                                                                } ?> value="swiftmailer">Swift Mailer</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -386,14 +420,28 @@ require_once('includes.php');
                                                                 <label for="email_type">E-Mail Sending Method</label>
                                                                 <p class="help-block">E-Mail connection and sending method. SMTP is a commonly used method. But if you have trouble with SMTP connections, you can choose different method.<br><br>
 
-                                                                    <strong>IMPORTANT:</strong> If you use foreign SMTP accounts on your server you may get SMTP connection errors, if your hosting service provider block foreign e-mail account connections.</p>
+                                                                    <strong>IMPORTANT:</strong> If you use foreign SMTP accounts on your server you may get SMTP connection errors, if your hosting service provider block foreign e-mail account connections.
+                                                                </p>
                                                                 <div>
                                                                     <select name="email_type" id="email_type" class="form-control">
-                                                                        <option value="smtp" <?php if(get_option("email_type") == 'smtp'){ echo "selected"; } ?>>SMTP</option>
-                                                                        <option value="mail" <?php if(get_option("email_type") == 'mail'){ echo "selected"; } ?>>PHPMail</option>
-                                                                        <option value="aws" <?php if(get_option("email_type") == 'aws'){ echo "selected"; } ?>>Amazon SES</option>
-                                                                        <option value="mandrill" <?php if(get_option("email_type") == 'mandrill'){ echo "selected"; } ?>>Mandrill</option>
-                                                                        <option value="sendgrid" <?php if(get_option("email_type") == 'sendgrid'){ echo "selected"; } ?>>SendGrid</option>
+                                                                        <option value="smtp" <?php if (get_option("email_type") == 'smtp') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>SMTP</option>
+                                                                        <option value="mail" <?php if (get_option("email_type") == 'mail') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>PHPMail</option>
+                                                                        <option value="aws" <?php if (get_option("email_type") == 'aws') {
+                                                                                                echo "selected";
+                                                                                            } ?>>Amazon SES</option>
+                                                                        <option value="mandrill" <?php if (get_option("email_type") == 'mandrill') {
+                                                                                                        echo "selected";
+                                                                                                    } ?>>Mandrill</option>
+                                                                        <option value="sendgrid" <?php if (get_option("email_type") == 'sendgrid') {
+                                                                                                        echo "selected";
+                                                                                                    } ?>>SendGrid</option>
+                                                                        <option value="gmail" <?php if (get_option("email_type") == 'gmail') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>Gmail</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -401,89 +449,125 @@ require_once('includes.php');
 
 
                                                             <div style="margin-top: 30px;">
-                                                                <div class="mailMethod-smtp mailMethods" <?php if($config['email_type'] != 'smtp'){ echo 'style="display: none;"'; } ?>>
-                                                                    <h4 class="text-warning">SMTP</h4><hr>
+                                                                <div class="mailMethod-smtp mailMethods" <?php if ($config['email_type'] != 'smtp') {
+                                                                                                                echo 'style="display: none;"';
+                                                                                                            } ?>>
+                                                                    <h4 class="text-warning">SMTP</h4>
+                                                                    <hr>
                                                                     <div class="form-group">
                                                                         <label for="smtp_host">SMTP Host</label>
                                                                         <p class="help-block">This is the host address for your smtp server, this is only needed if you are using SMTP as the Email Send Type.</p>
                                                                         <div>
-                                                                            <input name="smtp_host" type="Text" class="form-control" id="smtp_host" value="<?php echo get_option("smtp_host");?>">
+                                                                            <input name="smtp_host" type="Text" class="form-control" id="smtp_host" value="<?php echo get_option("smtp_host"); ?>">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label for="smtp_host">SMTP Port</label>
-                                                                        <input name="smtp_port" type="Text" class="form-control" id="smtp_port" value="<?php echo get_option("smtp_port");?>">
+                                                                        <input name="smtp_port" type="Text" class="form-control" id="smtp_port" value="<?php echo get_option("smtp_port"); ?>">
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label for="smtp_username">SMTP Username</label>
                                                                         <p class="help-block">This is the username for your smtp server, this is only needed if you are using SMTP as the Email Send Type.</p>
-                                                                        <input name="smtp_username" class="form-control" type="Text" id="smtp_username" value="<?php echo get_option("smtp_username");?>">
+                                                                        <input name="smtp_username" class="form-control" type="Text" id="smtp_username" value="<?php echo get_option("smtp_username"); ?>">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="smtp_password">SMTP Password</label>
                                                                         <p class="help-block">This is the password for your smtp server, this is only needed if you are using SMTP as the Email Send Type.</p>
-                                                                        <input name="smtp_password" type="password" class="form-control" id="smtp_password" value="<?php echo get_option("smtp_password");?>">
+                                                                        <input name="smtp_password" type="password" class="form-control" id="smtp_password" value="<?php echo get_option("smtp_password"); ?>">
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label for="smtp_secure">SMTP Encryption</label>
                                                                         <p class="help-block">If your e-mail service provider supported secure connections, you can choose security method on list. </p>
                                                                         <select name="smtp_secure" id="smtp_secure" class="form-control">
-                                                                            <option value="0" <?php if(get_option("smtp_secure") == '0'){ echo "selected"; } ?>>Off</option>
-                                                                            <option value="1" <?php if(get_option("smtp_secure") == '1'){ echo "selected"; } ?>>SSL</option>
-                                                                            <option value="2" <?php if(get_option("smtp_secure") == '2'){ echo "selected"; } ?>>TLS</option>
+                                                                            <option value="0" <?php if (get_option("smtp_secure") == '0') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>Off</option>
+                                                                            <option value="1" <?php if (get_option("smtp_secure") == '1') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>SSL</option>
+                                                                            <option value="2" <?php if (get_option("smtp_secure") == '2') {
+                                                                                                    echo "selected";
+                                                                                                } ?>>TLS</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="smtp_auth">SMTP Auth</label>
                                                                         <p class="help-block">SMTP Authentication, often abbreviated SMTP AUTH, is an extension of the Simple Mail Transfer Protocol whereby an SMTP client may log in using an authentication mechanism chosen among those supported by the SMTP server.</p>
                                                                         <select name="smtp_auth" id="smtp_auth" class="form-control">
-                                                                            <option value="true" <?php if(get_option("smtp_auth") == 'true'){ echo "selected"; } ?>>On</option>
-                                                                            <option value="false" <?php if(get_option("smtp_auth") == 'false'){ echo "selected"; } ?>>Off</option>
+                                                                            <option value="true" <?php if (get_option("smtp_auth") == 'true') {
+                                                                                                        echo "selected";
+                                                                                                    } ?>>On</option>
+                                                                            <option value="false" <?php if (get_option("smtp_auth") == 'false') {
+                                                                                                        echo "selected";
+                                                                                                    } ?>>Off</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="mailMethod-aws mailMethods" <?php if($config['email_type'] != 'aws'){ echo 'style="display: none;"'; } ?>>
-                                                                    <h4 class="text-warning">Amazon SES</h4><hr>
+                                                                <div class="mailMethod-aws mailMethods" <?php if ($config['email_type'] != 'aws') {
+                                                                                                            echo 'style="display: none;"';
+                                                                                                        } ?>>
+                                                                    <h4 class="text-warning">Amazon SES</h4>
+                                                                    <hr>
                                                                     <div class="form-group">
                                                                         <label for="aws_host">AWS Region</label>
-                                                                        <input name="aws_host" type="Text" class="form-control" id="aws_host" value="<?php echo get_option("aws_host");?>">
+                                                                        <input name="aws_host" type="Text" class="form-control" id="aws_host" value="<?php echo get_option("aws_host"); ?>">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="aws_access_key">AWS SMTP Username</label>
                                                                         <p class="help-block">
                                                                             Note: Your SMTP user name and password are not the same as your AWS access key ID and secret access key. Do not attempt to use your AWS credentials to authenticate yourself against the SMTP endpoint. For more information about credential types, <a href="https://docs.aws.amazon.com/console/ses/using-credentials" target="_blank">click here.</a></p>
-                                                                        <input name="aws_access_key" class="form-control" type="Text" id="aws_access_key" value="<?php echo get_option("aws_access_key");?>">
+                                                                        <input name="aws_access_key" class="form-control" type="Text" id="aws_access_key" value="<?php echo get_option("aws_access_key"); ?>">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="aws_secret_key">AWS SMTP Password</label>
                                                                         <p class="help-block"></p>
-                                                                        <input name="aws_secret_key" type="password" class="form-control" id="aws_secret_key" value="<?php echo get_option("aws_secret_key");?>">
+                                                                        <input name="aws_secret_key" type="password" class="form-control" id="aws_secret_key" value="<?php echo get_option("aws_secret_key"); ?>">
                                                                     </div>
 
                                                                 </div>
-                                                                <div class="mailMethod-mandrill mailMethods" <?php if($config['email_type'] != 'mandrill'){ echo 'style="display: none;"'; } ?>>
-                                                                    <h4 class="text-warning">Mandrill</h4><hr>
+                                                                <div class="mailMethod-mandrill mailMethods" <?php if ($config['email_type'] != 'mandrill') {
+                                                                                                                    echo 'style="display: none;"';
+                                                                                                                } ?>>
+                                                                    <h4 class="text-warning">Mandrill</h4>
+                                                                    <hr>
                                                                     <div class="form-group">
                                                                         <label for="mandrill_user">Mandrill Username</label>
-                                                                        <input name="mandrill_user" class="form-control" type="Text" id="mandrill_user" value="<?php echo get_option("mandrill_user");?>">
+                                                                        <input name="mandrill_user" class="form-control" type="Text" id="mandrill_user" value="<?php echo get_option("mandrill_user"); ?>">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="mandrill_key">Mandrill API Key</label>
-                                                                        <input name="mandrill_key" type="Text" class="form-control" id="mandrill_key" value="<?php echo get_option("mandrill_key");?>">
+                                                                        <input name="mandrill_key" type="Text" class="form-control" id="mandrill_key" value="<?php echo get_option("mandrill_key"); ?>">
                                                                     </div>
                                                                 </div>
-                                                                <div class="mailMethod-sendgrid mailMethods" <?php if($config['email_type'] != 'sendgrid'){ echo 'style="display: none;"'; } ?>>
-                                                                    <h4 class="text-warning">SendGrid</h4><hr>
+                                                                <div class="mailMethod-gmail mailMethods" <?php if ($config['email_type'] != 'gmail') {
+                                                                                                                echo 'style="display: none;"';
+                                                                                                            } ?>>
+                                                                    <h4 class="text-warning">Gmail</h4>
+                                                                    <hr>
+                                                                    <div class="form-group">
+                                                                        <label for="gmail_user">Gmail Username</label>
+                                                                        <input name="gmail_user" class="form-control" type="Text" id="gmail_user" value="<?php echo get_option("gmail_user"); ?>">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="gmail_pass">Gmail Password</label>
+                                                                        <input name="gmail_pass" type="Text" class="form-control" id="gmail_pass" value="<?php echo get_option("gmail_pass"); ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mailMethod-sendgrid mailMethods" <?php if ($config['email_type'] != 'sendgrid') {
+                                                                                                                    echo 'style="display: none;"';
+                                                                                                                } ?>>
+                                                                    <h4 class="text-warning">SendGrid</h4>
+                                                                    <hr>
                                                                     <div class="form-group">
                                                                         <label for="sendgrid_user">SendGrid Username</label>
-                                                                        <input name="sendgrid_user" class="form-control" type="Text" id="sendgrid_user" value="<?php echo get_option("sendgrid_user");?>">
+                                                                        <input name="sendgrid_user" class="form-control" type="Text" id="sendgrid_user" value="<?php echo get_option("sendgrid_user"); ?>">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="sendgrid_pass">SendGrid Password</label>
-                                                                        <input name="sendgrid_pass" type="password" class="form-control" id="sendgrid_pass" value="<?php echo get_option("sendgrid_pass");?>">
+                                                                        <input name="sendgrid_pass" type="password" class="form-control" id="sendgrid_pass" value="<?php echo get_option("sendgrid_pass"); ?>">
                                                                     </div>
                                                                 </div>
 
@@ -672,8 +756,8 @@ require_once('includes.php');
                                                                     <select class="form-control" name="invoice_admin_country">
                                                                         <?php
                                                                         $country = get_country_list();
-                                                                        foreach ($country as $value){
-                                                                            echo '<option value="'.$value['code'].'" '. (($value['code'] == get_option('invoice_admin_country'))? 'selected':'') .'>'.$value['asciiname'].'</option>';
+                                                                        foreach ($country as $value) {
+                                                                            echo '<option value="' . $value['code'] . '" ' . (($value['code'] == get_option('invoice_admin_country')) ? 'selected' : '') . '>' . $value['asciiname'] . '</option>';
                                                                         }
                                                                         ?>
                                                                     </select>
@@ -778,8 +862,12 @@ require_once('includes.php');
                                                                 <label>reCAPTCHA Enable/Disable:</label>
                                                                 <div>
                                                                     <select name="recaptcha_mode" id="recaptcha_mode" class="form-control">
-                                                                        <option <?php if(get_option("recaptcha_mode") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("recaptcha_mode") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("recaptcha_mode") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("recaptcha_mode") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -809,8 +897,12 @@ require_once('includes.php');
                                                                 <label>Blog Enable/Disable:</label>
                                                                 <div>
                                                                     <select name="blog_enable" id="blog_enable" class="form-control">
-                                                                        <option <?php if(get_option("blog_enable") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("blog_enable") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("blog_enable") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("blog_enable") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -818,8 +910,12 @@ require_once('includes.php');
                                                                 <label>Blog Banner Image:</label>
                                                                 <div>
                                                                     <select name="blog_banner" id="blog_banner" class="form-control">
-                                                                        <option <?php if(get_option("blog_banner") == '1'){ echo "selected"; } ?> value="1">Show</option>
-                                                                        <option <?php if(get_option("blog_banner") == '0'){ echo "selected"; } ?> value="0">Hide</option>
+                                                                        <option <?php if (get_option("blog_banner") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Show</option>
+                                                                        <option <?php if (get_option("blog_banner") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Hide</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -827,8 +923,12 @@ require_once('includes.php');
                                                                 <label>Show Blog On Home Page:</label>
                                                                 <div>
                                                                     <select name="show_blog_home" id="show_blog_home" class="form-control">
-                                                                        <option <?php if(get_option("show_blog_home") == '1'){ echo "selected"; } ?> value="1">Show</option>
-                                                                        <option <?php if(get_option("show_blog_home") == '0'){ echo "selected"; } ?> value="0">Hide</option>
+                                                                        <option <?php if (get_option("show_blog_home") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Show</option>
+                                                                        <option <?php if (get_option("show_blog_home") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Hide</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -836,8 +936,12 @@ require_once('includes.php');
                                                                 <label>Comment Enable/Disable:</label>
                                                                 <div>
                                                                     <select name="blog_comment_enable" id="blog_comment_enable" class="form-control">
-                                                                        <option <?php if(get_option("blog_comment_enable") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("blog_comment_enable") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("blog_comment_enable") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("blog_comment_enable") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -845,9 +949,15 @@ require_once('includes.php');
                                                                 <label>Comment Approval:</label>
                                                                 <div>
                                                                     <select name="blog_comment_approval" id="blog_comment_approval" class="form-control">
-                                                                        <option <?php if(get_option("blog_comment_approval") == '1'){ echo "selected"; } ?> value="1">Disable Auto Approve Comments</option>
-                                                                        <option <?php if(get_option("blog_comment_approval") == '2'){ echo "selected"; } ?> value="2">Auto Approve Login Users Comments</option>
-                                                                        <option <?php if(get_option("blog_comment_approval") == '3'){ echo "selected"; } ?> value="3">Auto Approve All Comments</option>
+                                                                        <option <?php if (get_option("blog_comment_approval") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Disable Auto Approve Comments</option>
+                                                                        <option <?php if (get_option("blog_comment_approval") == '2') {
+                                                                                    echo "selected";
+                                                                                } ?> value="2">Auto Approve Login Users Comments</option>
+                                                                        <option <?php if (get_option("blog_comment_approval") == '3') {
+                                                                                    echo "selected";
+                                                                                } ?> value="3">Auto Approve All Comments</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -856,8 +966,12 @@ require_once('includes.php');
                                                                 <p class="help-block">Non-login users have to enter their name and email address.</p>
                                                                 <div>
                                                                     <select name="blog_comment_user" id="blog_comment_user" class="form-control">
-                                                                        <option <?php if(get_option("blog_comment_user") == '1'){ echo "selected"; } ?> value="1">Everyone</option>
-                                                                        <option <?php if(get_option("blog_comment_user") == '0'){ echo "selected"; } ?> value="0">Only Login Users</option>
+                                                                        <option <?php if (get_option("blog_comment_user") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Everyone</option>
+                                                                        <option <?php if (get_option("blog_comment_user") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Only Login Users</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -875,8 +989,12 @@ require_once('includes.php');
                                                                 <label>Testimonials Enable/Disable:</label>
                                                                 <div>
                                                                     <select name="testimonials_enable" id="testimonials_enable" class="form-control">
-                                                                        <option <?php if(get_option("testimonials_enable") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("testimonials_enable") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("testimonials_enable") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("testimonials_enable") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -884,8 +1002,12 @@ require_once('includes.php');
                                                                 <label>Show On Blog Page:</label>
                                                                 <div>
                                                                     <select name="show_testimonials_blog" id="show_testimonials_blog" class="form-control">
-                                                                        <option <?php if(get_option("show_testimonials_blog") == '1'){ echo "selected"; } ?> value="1">Show</option>
-                                                                        <option <?php if(get_option("show_testimonials_blog") == '0'){ echo "selected"; } ?> value="0">Hide</option>
+                                                                        <option <?php if (get_option("show_testimonials_blog") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Show</option>
+                                                                        <option <?php if (get_option("show_testimonials_blog") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Hide</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -893,8 +1015,12 @@ require_once('includes.php');
                                                                 <label>Show On Home Page:</label>
                                                                 <div>
                                                                     <select name="show_testimonials_home" id="show_testimonials_home" class="form-control">
-                                                                        <option <?php if(get_option("show_testimonials_home") == '1'){ echo "selected"; } ?> value="1">Show</option>
-                                                                        <option <?php if(get_option("show_testimonials_home") == '0'){ echo "selected"; } ?> value="0">Hide</option>
+                                                                        <option <?php if (get_option("show_testimonials_home") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Show</option>
+                                                                        <option <?php if (get_option("show_testimonials_home") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Hide</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -923,8 +1049,12 @@ require_once('includes.php');
                                                                 <label>Enable/Disable:</label>
                                                                 <div>
                                                                     <select name="quickorder_enable" id="quickorder_enable" class="form-control">
-                                                                        <option <?php if(get_option("quickorder_enable") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("quickorder_enable") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("quickorder_enable") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("quickorder_enable") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -933,8 +1063,12 @@ require_once('includes.php');
                                                                 <p class="help-block">Check the home page <a href="https://quickorder.codentheme.com" target="_blank">here</a>.</p>
                                                                 <div>
                                                                     <select name="quickorder_homepage_enable" id="quickorder_homepage_enable" class="form-control">
-                                                                        <option <?php if(get_option("quickorder_homepage_enable") == '1'){ echo "selected"; } ?> value="1">Enable</option>
-                                                                        <option <?php if(get_option("quickorder_homepage_enable") == '0'){ echo "selected"; } ?> value="0">Disable</option>
+                                                                        <option <?php if (get_option("quickorder_homepage_enable") == '1') {
+                                                                                    echo "selected";
+                                                                                } ?> value="1">Enable</option>
+                                                                        <option <?php if (get_option("quickorder_homepage_enable") == '0') {
+                                                                                    echo "selected";
+                                                                                } ?> value="0">Disable</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -954,18 +1088,18 @@ require_once('includes.php');
                                                                 <label>Short Codes</label>
                                                                 <table class="quickad-codes">
                                                                     <tbody>
-                                                                    <tr>
-                                                                        <td><input value="{ORDER_ID}" readonly="readonly" onclick="this.select()"> - Order Id</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input value="{ORDER_DETAILS}" readonly="readonly" onclick="this.select()"> - Order Details</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input value="{CUSTOMER_DETAILS}" readonly="readonly" onclick="this.select()"> - Customer Details</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><input value="{ORDER_TOTAL}" readonly="readonly" onclick="this.select()"> - Order Total Price</td>
-                                                                    </tr>
+                                                                        <tr>
+                                                                            <td><input value="{ORDER_ID}" readonly="readonly" onclick="this.select()"> - Order Id</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><input value="{ORDER_DETAILS}" readonly="readonly" onclick="this.select()"> - Order Details</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><input value="{CUSTOMER_DETAILS}" readonly="readonly" onclick="this.select()"> - Customer Details</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><input value="{ORDER_TOTAL}" readonly="readonly" onclick="this.select()"> - Order Total Price</td>
+                                                                        </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -984,11 +1118,11 @@ require_once('includes.php');
                                                                 <p class="help-block">Verify the purchase code you will have access to free updates of QuickQR. Updates may contain functionality improvements and important security fixes. <br>For more information on where to find your purchase code see this <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-can-I-find-my-Purchase-Code-" target="_blank">page</a>.</p>
                                                             </div>
                                                             <?php
-                                                            if(isset($config['purchase_key']) && $config['purchase_key'] != ""){
-                                                                ?>
+                                                            if (isset($config['purchase_key']) && $config['purchase_key'] != "") {
+                                                            ?>
                                                                 <div class="alert alert-success">
                                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                                                    <strong>Success!</strong>   Purchase code verified.
+                                                                    <strong>Success!</strong> Purchase code verified.
                                                                 </div>
 
                                                             <?php
@@ -1043,18 +1177,18 @@ require_once('includes.php');
 <script>
     var url = window.location.href;
     var activeTab = url.substring(url.indexOf("#") + 1);
-    if(url.indexOf("#") > -1){
-        if(activeTab.length > 0){
+    if (url.indexOf("#") > -1) {
+        if (activeTab.length > 0) {
             $(".quickad-nav-item").removeClass("active");
             $(".tab-pane").removeClass("active in");
-            $("li[data-target = #"+activeTab+"]").addClass("active");
+            $("li[data-target = #" + activeTab + "]").addClass("active");
             $("#" + activeTab).addClass("active in");
-            $('a[href="#'+ activeTab +'"]').tab('show')
+            $('a[href="#' + activeTab + '"]').tab('show')
         }
     }
 </script>
 <script>
-    $(".save-changes").on('click',function(){
+    $(".save-changes").on('click', function() {
         $(".save-changes").addClass("bookme-progress");
     });
     // wait for the DOM to be loaded
@@ -1067,8 +1201,7 @@ require_once('includes.php');
                 data = JSON.parse(data);
                 if (data.status == "success") {
                     alertify.success(data.message);
-                }
-                else {
+                } else {
                     alertify.error(data.message);
                 }
             }
@@ -1076,18 +1209,19 @@ require_once('includes.php');
         });
 
         /* Mail Method Changer */
-        $("#email_type").on('change',function(){
+        $("#email_type").on('change', function() {
             $(".mailMethods").hide();
-            $(".mailMethod-"+$(this).val()).fadeIn('fast');
+            $(".mailMethod-" + $(this).val()).fadeIn('fast');
         });
     });
 </script>
 <!-- Page JS Code -->
 <script>
-    $(function()
-    {
+    $(function() {
         // Init page helpers (BS Datepicker + BS Colorpicker + Select2 + Masked Input + Tags Inputs plugins)
         App.initHelpers('select2');
     });
 </script>
-</body></html>
+</body>
+
+</html>
