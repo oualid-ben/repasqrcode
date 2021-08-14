@@ -230,6 +230,7 @@ else if ($config['email_type'] == 'mandrill') {
         $mail->Password = $config['gmail_pass'];
         $mail->Port = 587;
 
+
         // $mail->Priority = 1;
         // $mail->Encoding = 'base64';
         // $mail->CharSet = "utf-8";

@@ -556,6 +556,7 @@ require_once('includes.php');
                                                                         <input name="gmail_pass" type="Text" class="form-control" id="gmail_pass" value="<?php echo get_option("gmail_pass"); ?>">
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="mailMethod-sendgrid mailMethods" <?php if ($config['email_type'] != 'sendgrid') {
                                                                                                                     echo 'style="display: none;"';
                                                                                                                 } ?>>

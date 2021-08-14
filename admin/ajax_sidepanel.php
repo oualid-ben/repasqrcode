@@ -1927,6 +1927,7 @@ function SaveSettings()
         update_option("gmail_user", $_POST['gmail_user']);
         update_option("gmail_pass", $_POST['gmail_pass']);
 
+
         update_option("sendgrid_user", $_POST['sendgrid_user']);
         update_option("sendgrid_pass", $_POST['sendgrid_pass']);
 

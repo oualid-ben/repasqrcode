@@ -251,6 +251,7 @@ else if ($config['email_type'] == 'sendgrid') { # SendGrid
     $transport->setPassword($config['sendgrid_pass']);
     $transport->setEncryption('tls');
 
+
     # Create Mailer
     $mailer = Swift_Mailer::newInstance($transport);
 
