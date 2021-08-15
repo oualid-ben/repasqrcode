@@ -65,6 +65,7 @@
     {EXTERNAL_CODE}
     <!-- ===/External Code=== -->
 
+
 </head>
 <body class="{LANGUAGE_DIRECTION}">
     <!--[if lt IE 8]>

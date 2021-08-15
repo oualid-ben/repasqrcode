@@ -19,7 +19,7 @@
                     IF('{USERNAME}'!=""){
                     <a href="{LINK_QRBUILDER}" class="button ripple-effect">{LANG_QRBUILDER}</a>
                     {ELSE}
-                    <a href="{LINK_LOGIN}" class="login popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a>
+                    <a href="{LINK_LOGIN}" class="login popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a> 
                     {:IF}
                 </div>
 
