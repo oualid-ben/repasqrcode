@@ -253,6 +253,7 @@ IF(!{LOGGED_IN}){
                 location.reload();
             }
         });
+       
     });
     $(document).ready(function () {
         var lang = $.cookie('Quick_lang');
@@ -260,7 +261,13 @@ IF(!{LOGGED_IN}){
             var res = lang.substr(0, 2);
             $('#selected_lang').html(res.toUpperCase());
         }
+         $(document).on('click','.login',function (e) {
+            e.preventDefault();
+            console.log(this);
+             window.location.href=$(this).attr('href');
+        });
     });
+    
 </script>
 </body>
 </html>

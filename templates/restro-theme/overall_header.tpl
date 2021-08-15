@@ -45,6 +45,7 @@
         var siteurl = '{SITE_URL}';
         var template_name = '{TPL_NAME}';
         var ajaxurl = "{SITE_URL}php/{QUICKAD_USER_SECRET_FILE}.php";
+    
     </script>
     <style>
         :root{{LOOP: COLORS}--theme-color-{COLORS.id}: {COLORS.value};{/LOOP: COLORS}}
@@ -63,6 +64,7 @@
     <!-- ===External Code=== -->
     {EXTERNAL_CODE}
     <!-- ===/External Code=== -->
+
 </head>
 <body class="{LANGUAGE_DIRECTION}">
     <!--[if lt IE 8]>
@@ -108,7 +110,7 @@
                         <div class="header-widget">
 
                             IF('{USERNAME}'==""){
-                            <a href="#sign-in-dialog" class="popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a>
+                            <a href="{LINK_LOGIN}" class="login popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a>
                             {ELSE}
                             <div class="header-notifications user-menu">
                                 <div class="header-notifications-trigger">

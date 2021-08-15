@@ -19,7 +19,7 @@
                     IF('{USERNAME}'!=""){
                     <a href="{LINK_QRBUILDER}" class="button ripple-effect">{LANG_QRBUILDER}</a>
                     {ELSE}
-                    <a href="#sign-in-dialog" class="popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a>
+                    <a href="{LINK_LOGIN}" class="login popup-with-zoom-anim button ripple-effect">{LANG_JOIN_NOW}</a>
                     {:IF}
                 </div>
 
@@ -193,7 +193,7 @@ IF({TESTIMONIALS_ENABLE} && {SHOW_TESTIMONIALS_HOME}){
                     <button type="submit" class="button full-width margin-top-20 ripple-effect" name="upgrade" value="{SUB_TYPES.id}">{LANG_UPGRADE}</button>
 
                     {ELSE}
-                    <a href="#sign-in-dialog" class="popup-with-zoom-anim button full-width margin-top-20 ripple-effect">{LANG_JOIN_NOW}</a>
+                    <a href="{LINK_LOGIN}" class="login popup-with-zoom-anim button full-width margin-top-20 ripple-effect">{LANG_JOIN_NOW}</a>
                     {:IF}
                     {ELSE}
                     <a href="javascript:void(0);" class="button full-width margin-top-20 ripple-effect">
