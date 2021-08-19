@@ -51,14 +51,14 @@
         :root{{LOOP: COLORS}--theme-color-{COLORS.id}: {COLORS.value};{/LOOP: COLORS}}
     </style>
 
-    <link rel="stylesheet" href="{SITE_URL}includes/assets/css/icons.css">
-    <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/css/color-picker.min.css?ver={VERSION}">
-    <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/css/style.css?ver={VERSION}">
-    <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/css/color.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}includes/assets/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/color-picker.min.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/style.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/color.css?ver={VERSION}">
     <script src="{SITE_URL}templates/{TPL_NAME}/js/jquery-3.4.1.min.js"></script>
 
     IF("{LANGUAGE_DIRECTION}"=="rtl"){
-    <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/css/rtl.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/rtl.css?ver={VERSION}">
     {:IF}
 
     <!-- ===External Code=== -->
