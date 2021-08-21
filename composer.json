@@ -2,7 +2,9 @@
     "scripts": {
       "compile": [
         "chmod -R 777 install/",
-        "chmod -R 777 install/database"
+        "chmod -R 777 install/database",
+        "chmod -R 777 storage",
+        "chmod -R 777 storage/testimonials"
       ]
     }
 }
