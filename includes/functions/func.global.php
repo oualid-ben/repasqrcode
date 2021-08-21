@@ -1,9 +1,9 @@
 <?php
 load_all_option_in_template($config);
 $timezone = get_option("timezone");
-if (isset($timezone)) {
-    $timezone = 'Indian/Maldives';
-}
+// if (isset($timezone)) {
+//     $timezone = 'Indian/Maldives';
+// }
 
 
 date_default_timezone_set($timezone);
