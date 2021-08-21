@@ -39,12 +39,14 @@
     <meta property="twitter:domain" content="{SITE_URL}">
     <meta name="twitter:image:src" content="{META_IMAGE}"/>
     <link rel="shortcut icon" href="{SITE_URL}storage/logo/{SITE_FAVICON}">
+    <link rel="shortcut icon" href="https://repasqrcode.herokuapp.com/storage/logo/{SITE_FAVICON}">
     <script async>
         var themecolor = '{THEME_COLOR}';
         var mapcolor = '{MAP_COLOR}';
-        var siteurl = '{SITE_URL}';
+        var siteurl = 'https://repasqrcode.herokuapp.com';
         var template_name = '{TPL_NAME}';
-        var ajaxurl = "{SITE_URL}php/{QUICKAD_USER_SECRET_FILE}.php";
+        var ajaxurl = "{SITE_URL}/php/{QUICKAD_USER_SECRET_FILE}.php";
+        var ajaxurl = "https://repasqrcode.herokuapp.com/php/{QUICKAD_USER_SECRET_FILE}.php";
     
     </script>
     <style>
