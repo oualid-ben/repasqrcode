@@ -161,7 +161,7 @@ function addTestimonial()
                     $filename = uniqid(time()) . '.' . $ext;
                     if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                         $image = $filename;
-                        resizeImage(100, $main_path . $filename, $main_path . $filename);
+                        // resizeImage(100, $main_path . $filename, $main_path . $filename);
                     } else {
                         $error[] = 'Unexpected error, please try again.';
                     }
@@ -232,7 +232,7 @@ function editTestimonial()
                     // if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                     if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                         $image[] = $filename;
-                        resizeImage(100, $main_path . $filename, $main_path . $filename);
+                        // resizeImage(100, $main_path . $filename, $main_path . $filename);
 
                         // remove old image
                         $info = ORM::for_table($config['db']['pre'] . 'testimonials')
