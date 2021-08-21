@@ -225,10 +225,13 @@ function editTestimonial()
             if (!empty($filename)) {
                 //File extension check
                 if (in_array($ext, $valid_formats)) {
+
                     $main_path = "../storage/testimonials/";
                     $filename = uniqid(time()) . '.' . $ext;
+
+                    // if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
                     if (move_uploaded_file($file['tmp_name'], $main_path . $filename)) {
-                        $image = $filename;
+                        $image[] = $filename;
                         resizeImage(100, $main_path . $filename, $main_path . $filename);
 
                         // remove old image
@@ -236,11 +239,11 @@ function editTestimonial()
                             ->select('image')
                             ->find_one($_POST['id']);
 
-                        if ($info['image'] != "default.png") {
-                            if (file_exists($main_path . $info['image'])) {
-                                unlink($main_path . $info['image']);
-                            }
-                        }
+                        // if ($info['image'] != "default.png") {
+                        //     if (file_exists($main_path . $info['image'])) {
+                        //         unlink($main_path . $info['image']);
+                        //     }
+                        // }
                     } else {
                         $error[] = 'Unexpected error, please try again.';
                     }
@@ -255,8 +258,9 @@ function editTestimonial()
         $test = ORM::for_table($config['db']['pre'] . 'testimonials')->find_one($_POST['id']);
         $test->name = $title;
         $test->designation = $designation;
+
         if ($image) {
-            $test->image = $image;
+            $test->image = $image[0];
         }
         $test->content = $description;
         $test->save();
