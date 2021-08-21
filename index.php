@@ -28,9 +28,6 @@ $site_url = $protocol
 if ($site_url == 'https://www.mealqrcode.com' || $site_url == 'http://www.mealqrcode.com') {
     $site_url = 'https://repasqrcode.herokuapp.com';
 }
-print_r($site_url);
-exit;
-
 
 define("SITEURL", $site_url);
 
