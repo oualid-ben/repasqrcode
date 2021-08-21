@@ -39,14 +39,12 @@
     <meta property="twitter:domain" content="{SITE_URL}">
     <meta name="twitter:image:src" content="{META_IMAGE}"/>
     <link rel="shortcut icon" href="{SITE_URL}storage/logo/{SITE_FAVICON}">
-    <link rel="shortcut icon" href="https://repasqrcode.herokuapp.com/storage/logo/{SITE_FAVICON}">
     <script async>
         var themecolor = '{THEME_COLOR}';
         var mapcolor = '{MAP_COLOR}';
-        var siteurl = 'https://repasqrcode.herokuapp.com';
+        var siteurl = '{SITE_URL}';
         var template_name = '{TPL_NAME}';
         var ajaxurl = "{SITE_URL}/php/{QUICKAD_USER_SECRET_FILE}.php";
-        var ajaxurl = "https://repasqrcode.herokuapp.com/php/{QUICKAD_USER_SECRET_FILE}.php";
     
     </script>
     <style>
@@ -60,18 +58,8 @@
     <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/color.css?ver={VERSION}">
     <script src="{SITE_URL}templates/{TPL_NAME}/js/jquery-3.4.1.min.js"></script>
 
-
-    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/includes/assets/css/icons.css">
-    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/color-picker.min.css?ver={VERSION}">
-    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/style.css?ver={VERSION}">
-    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/color.css?ver={VERSION}">
-    <script src="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/jquery-3.4.1.min.js"></script>
-
-  
-
     IF("{LANGUAGE_DIRECTION}"=="rtl"){
     <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/rtl.css?ver={VERSION}">
-    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/rtl.css?ver={VERSION}">
     {:IF}
 
     <!-- ===External Code=== -->
