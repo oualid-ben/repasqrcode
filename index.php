@@ -24,6 +24,9 @@ $site_url = $protocol
     . $_SERVER["HTTP_HOST"]
     . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
+print_r($site_url);
+exit;
+
 
 define("SITEURL", $site_url);
 
