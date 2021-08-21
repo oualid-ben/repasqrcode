@@ -23,12 +23,6 @@ $site_url = $protocol
     . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
 
-
-echo "<pre>";
-print_r([$_SERVER["HTTP_HOST"], $site_url]);
-exit;
-
-
 define("SITEURL", $site_url);
 
 $config['app_url'] = SITEURL . "/php/";
