@@ -73,6 +73,7 @@ $router->map('GET|POST', '/ipn/[a:i]?/[*:id]?/?', 'ipn.php');
 $router->map('GET|POST', '/payment/[*:token]?/[a:status]?/[*:message]?/?', 'payment.php');
 $router->map('GET', '/sitemap.xml/?', 'xml.php');
 $router->map('GET|POST', '/testimonials/?', 'testimonials.php');
+$router->map('GET|POST', '/privacy_policy/?', 'privacy_policy.php');
 $router->map('GET|POST', '/blog/?', 'blog.php');
 $router->map('GET|POST', '/blog/category/[*:keyword]/?', 'blog-category.php');
 $router->map('GET|POST', '/blog/author/[*:keyword]/?', 'blog-author.php');

@@ -31,6 +31,7 @@
                         <h3>{LANG_HELPFUL_LINKS}</h3>
                         <ul>
                           <!--  <li><a href="{LINK_FAQ}">{LANG_FAQ}</a></li> --> 
+                            <li><a href="{SITE_URL}privacy_policy">Privacy Policy</a></li>
                             <li><a href="{LINK_FEEDBACK}">{LANG_FEEDBACK}</a></li>
                             <li><a href="{LINK_REPORT}">{LANG_REPORT}</a></li>
                             <li><a href="{LINK_CONTACT}">{LANG_CONTACT}</a></li>
