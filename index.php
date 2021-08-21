@@ -18,10 +18,20 @@ else
     $protocol = !empty($_SERVER['HTTPS']) && $_SERVER["HTTPS"] != "off" ? "https://" : "http://";
 
 // Define APPURL
+
+
 $site_url = $protocol
     . $_SERVER["HTTP_HOST"]
     . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
+
+if ($_SERVER["HTTP_HOST"] == 'www.repasqrcode.herokuapp.com' || $site_url == $protocol + 'www.repasqrcode.herokuapp.com') {
+    $site_url = $protocol
+        . 'repasqrcode.herokuapp.com'
+        . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
+        . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
+}
+
 
 define("SITEURL", $site_url);
 
