@@ -24,6 +24,10 @@ $site_url = $protocol
     . $_SERVER["HTTP_HOST"]
     . (dirname($_SERVER["SCRIPT_NAME"]) == DIRECTORY_SEPARATOR ? "" : "/")
     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
+
+if ($site_url == 'https://www.mealqrcode.com' || $site_url == 'http://www.mealqrcode.com') {
+    $site_url = 'https://repasqrcode.herokuapp.com';
+}
 print_r($site_url);
 exit;
 
