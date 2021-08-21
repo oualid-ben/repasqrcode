@@ -55,6 +55,11 @@
     <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/color-picker.min.css?ver={VERSION}">
     <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/style.css?ver={VERSION}">
     <link rel="stylesheet" type="text/css" href="{SITE_URL}templates/{TPL_NAME}/css/color.css?ver={VERSION}">
+
+    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/includes/assets/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/color-picker.min.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/style.css?ver={VERSION}">
+    <link rel="stylesheet" type="text/css" href="https://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/color.css?ver={VERSION}">
     <script src="{SITE_URL}templates/{TPL_NAME}/js/jquery-3.4.1.min.js"></script>
 
     IF("{LANGUAGE_DIRECTION}"=="rtl"){
