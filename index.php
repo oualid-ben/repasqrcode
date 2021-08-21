@@ -24,7 +24,8 @@ $site_url = $protocol
     . trim(str_replace("\\", "/", dirname($_SERVER["SCRIPT_NAME"])), "/");
 
 
-echo $_SERVER["HTTP_HOST"];
+echo "<pre>";
+print_r([$_SERVER["HTTP_HOST"], $site_url]);
 exit;
 
 
