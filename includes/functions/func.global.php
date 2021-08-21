@@ -5,6 +5,7 @@ if (isset($timezone)) {
     $timezone = 'Indian/Maldives';
 }
 
+
 date_default_timezone_set($timezone);
 $date = new DateTime("now", new DateTimeZone($timezone));
 $timenow = date('Y-m-d H:i:s');
