@@ -223,6 +223,7 @@ IF(!{LOGGED_IN}){
 </script>
 <!-- Scripts
 ================================================== -->
+
 <link rel="stylesheet" href="{SITE_URL}templates/{TPL_NAME}/css/alertify.css?ver={VERSION}" />
 <script src="{SITE_URL}templates/{TPL_NAME}/js/alertify.min.js?ver={VERSION}"></script>
 
@@ -239,6 +240,25 @@ IF(!{LOGGED_IN}){
 <script src="{SITE_URL}templates/{TPL_NAME}/js/jquery.cookie.min.js?ver={VERSION}"></script>
 <script src="{SITE_URL}templates/{TPL_NAME}/js/user-ajax.js?ver={VERSION}"></script>
 <script src="{SITE_URL}templates/{TPL_NAME}/js/custom.js?ver={VERSION}"></script>
+
+
+<link rel="stylesheet" href="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/css/alertify.css?ver={VERSION}" />
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/alertify.min.js?ver={VERSION}"></script>
+
+
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/chosen.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/jquery.lazyload.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/tippy.all.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/simplebar.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/bootstrap-slider.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/bootstrap-select.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/snackbar.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/counterup.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/magnific-popup.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/slick.min.js"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/jquery.cookie.min.js?ver={VERSION}"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/user-ajax.js?ver={VERSION}"></script>
+<script src="http://repasqrcode.herokuapp.com/templates/{TPL_NAME}/js/custom.js?ver={VERSION}"></script>
 
 <script>
     /* THIS PORTION OF CODE IS ONLY EXECUTED WHEN THE USER THE LANGUAGE(CLIENT-SIDE) */
