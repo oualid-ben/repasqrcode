@@ -77,6 +77,7 @@ if (isset($_SESSION['admin']['id'])) {
     // }
     ?>
     <script>
+        var ajaxurl = '<?php echo $config['site_url'] . "admin/arrocy.php"; ?>';
         var sidepanel_ajaxurl = '<?php echo $config['site_url'] . "admin/ajax_sidepanel.php"; ?>';
     </script>
 </head>
