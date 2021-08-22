@@ -1,7 +1,7 @@
 jQuery(function($) {
     var url = window.location.href;     // Returns full URL (https://example.com/path/example.html)
     url = url.split("admin/");
-    url = url[0]+'admin/';
+    url = url[0]+'admin/js/admin-ajax.js';
     var ajaxurl = url;
 
     "use strict";
