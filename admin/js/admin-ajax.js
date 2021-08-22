@@ -1,4 +1,9 @@
 jQuery(function($) {
+    var url = window.location.href;     // Returns full URL (https://example.com/path/example.html)
+    url = url.split("admin/");
+    url = url[0]+'admin/';
+    var ajaxurl = url;
+
     "use strict";
     alertify.logPosition("top right");
     // Ads list delegated events.
