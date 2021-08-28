@@ -204,7 +204,7 @@ IF({TESTIMONIALS_ENABLE} && {SHOW_TESTIMONIALS_HOME}){
                         </div>
                         <div class="testimonial-author">
                             <h4>{TESTIMONIALS.name}</h4>
-                            <span>{TESTIMONIALS.designation}</span>
+                           <!-- <span>{TESTIMONIALS.designation}</span> -->
                         </div>
                         <div class="testimonial">{TESTIMONIALS.content}</div>
                     </div>
