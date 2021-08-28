@@ -6,7 +6,7 @@
                     <div class="footer-logo margin-bottom-10">
                         <img src="{SITE_URL}storage/logo/{SITE_LOGO_FOOTER}" alt="">
                     </div>
-                    <p>{FOOTER_TEXT}</p>
+                    <!--  <p>{FOOTER_TEXT}</p> -->
                 </div>
                 <div class="col-xl-1 col-lg-1">
                 </div>
