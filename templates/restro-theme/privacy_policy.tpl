@@ -17,6 +17,7 @@
         </div>
     </div>
 </div>
+
 <div class="container margin-bottom-50">
             
         <p><h1>Privacy Policy for MealQrCode</h1></p>

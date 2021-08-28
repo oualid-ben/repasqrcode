@@ -1598,6 +1598,7 @@ function paymentEdit()
             WHERE `payment_id` = '" . $_POST['id'] . "' LIMIT 1 ";
         $query_result = $pdo->query($query);
 
+
         if (isset($_POST['paypal_sandbox_mode'])) {
             update_option("paypal_sandbox_mode", isset($_POST['paypal_sandbox_mode']) ? $_POST['paypal_sandbox_mode'] : "");
             update_option("paypal_payment_mode", isset($_POST['paypal_payment_mode']) ? $_POST['paypal_payment_mode'] : "");

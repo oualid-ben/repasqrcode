@@ -22,6 +22,7 @@
 
 // $result = ORM::for_table($config['db']['pre'] . 'privacy_policy')->raw_query($query)->find_many();
 
+
 // $privacy_policy = array();
 // if ($result) {
 //     foreach ($result as $row) {

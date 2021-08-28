@@ -6,6 +6,7 @@ $timezone = get_option("timezone");
 // }
 
 
+
 date_default_timezone_set($timezone);
 $date = new DateTime("now", new DateTimeZone($timezone));
 $timenow = date('Y-m-d H:i:s');

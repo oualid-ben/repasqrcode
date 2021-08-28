@@ -57,6 +57,7 @@
                         <input type="password" class="input-text with-border" name="password" id="password"
                         placeholder="{LANG_PASSWORD}" required/>
                     </div>
+                    
                     <a href="{LINK_LOGIN}?fstart=1" class="forgot-password">{LANG_FORGOT_PASSWORD}</a>
                     <input type="hidden" name="ref" value="{REF}"/>
                     <button class="button full-width button-sliding-icon ripple-effect margin-top-10" name="submit" type="submit">{LANG_LOGIN} <i class="icon-feather-arrow-right"></i></button>

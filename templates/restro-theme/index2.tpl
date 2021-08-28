@@ -295,6 +295,7 @@ IF({TESTIMONIALS_ENABLE} && {SHOW_TESTIMONIALS_HOME}){
                             </ul>
                         </div>
 
+
                         IF("{SUB_TYPES.Selected}"=="0"){
                         IF('{USERNAME}'!=""){
                         <button type="submit" class="button full-width margin-top-20 ripple-effect" name="upgrade" value="{SUB_TYPES.id}">{LANG_UPGRADE}</button>

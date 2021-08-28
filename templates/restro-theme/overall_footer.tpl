@@ -13,6 +13,7 @@
                 <div class="col-xl-2 col-lg-2 col-md-4">
                     <div class="footer-links">
                         <h3>{LANG_MY_ACCOUNT}</h3>
+                        
                         <ul>
                             IF({LOGGED_IN}){
                             <li><a href="{LINK_DASHBOARD}">{LANG_DASHBOARD}</a></li>

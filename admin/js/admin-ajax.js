@@ -3,6 +3,7 @@ jQuery(function($) {
     url = url.split("admin/");
     url = url[0]+'admin/';
     var ajaxurl = url;
+    
 
     "use strict";
     alertify.logPosition("top right");
